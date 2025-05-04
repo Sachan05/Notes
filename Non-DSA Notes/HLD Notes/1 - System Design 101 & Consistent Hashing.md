@@ -185,19 +185,18 @@ Imagine, Del.icio.us becomes majorly popular. It starts getting massive traffic.
 Now, remember this is 2004. Best machines had 40GB hard disk. If you were getting 1 Million new bookmarks every day, and every bookmark is 200 bytes roughly, then you are adding 200MB of new bookmarks every day. Which means you will run out of space in 6 months. What do you do? 
 
 We can get better machines. Maybe machines with higher storage, better CPU. They'd be expensive but will buy us more time. 
-This is called vertical scaling. 
+This is called **vertical scaling**. 
 
 However, vertical scaling will not solve the problem for me permanently. 
 
 So, that means I need some way of splitting data between the machines. Then, if I have 100 such machines, my total storage becomes 
    $40GB * 100 = 4TB$
-That is called horizontal scaling. 
+That is called **horizontal scaling**. 
 
 How do I split data though? 
 
 
 You will have to consider splitting the information you have between machines. This is called sharding. 
-
 
 ---
 title: How sharding works
@@ -231,9 +230,9 @@ card_type: cue_card
 
 Let’s check certain approach for sharding. 
 
-**Approach 1:** Assign userId to userId % number_of_shards. While this approach is great, it fails when number of shards change, as it causes almost every user’s data to be copied to another machine. Massive downtime when shard is added.
+**Approach 1:** Assign userId to userId % number_of_shards. While this approach is great, it fails when number of shards change, as it causes almost every user’s data to be copied to another machine. Massive downtime when shard is added.(Modulo based distribution of load)
 
-**Approach 2:** Range based assignment. Load skew - first adopters more likely to be busier users. Also, every range’s total storage usage will only increase as they add more bookmarks. Addition of new shard does not help existing shards. 
+**Approach 2:** Range based assignment. Load skew - first adopters more likely to be busier users. Also, every range’s total storage usage will only increase as they add more bookmarks. Addition of new shard does not help existing shards.(Range based distrtibution of load) 
 
 Let’s look at the real approach used in most cases - Consistent Hashing. 
 
@@ -301,3 +300,90 @@ So, we typically folllow a process of warming up the shard before making it acti
          - Or I return response which might be inconsistent (compromise consistency). 
 
 See you in the next lecture! 
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+Vertical Scaling : 
+    * hardware limitations
+    * high cost
+    * single point of failure
+    
+Horizontal Scaling :
+    * No spof
+    * No h/w limitations
+    * can be expanded infinitely but system becomes more complex
+
+    
+
+**Load Balancer** : 
+Balances the load equally to all servers. in large applications we have multiple load balancers. 
+
+* To avoid spof, we ususally have multiple LB assigned at different IPs, it also reduces latency.
+  
+* we have different mechanisms for LB to check if servers are up or not.
+    * heartbeat - every server is configured in such a way that it send a heartbeat every 1 second to LB, if LB misses 3 or more beats from                   any server it assumes, the server is down.
+    * Health check - every 1 second, LB will keep pinging the servers, if it recieves the acknowledgement, it assumes servers are up.
+
+* Routing Algorithms:
+      * fast 
+      * easy to implement
+      * llight
+      * easy addition/removal of servers
+      * less data transfer should take place if server is added or removed.
+
+* stateless vs statefull load balancing.
+      
+    * Stateless systems do not retain any session data. Requests are distributed randomly or using simple algorithms like round-robin, where each request is sent to the next server in a cyclic order.
+Benefits include easier scaling as there's no need for synchronization of state between servers【8:4†source】【8:3†source】.
+
+    * Stateful Load Balancing:
+Involves maintaining session information or state about the user's requests. This is essential in applications where each request depends on prior interactions (e.g., chatbots like ChatGPT).
+The load balancer ensures that requests from the same user go to the same server to maintain continuity
+
+
+* Stateless LB algo:
+      1) Round Robin :
+          * easy n light to implement
+          * equal distribution of load
+          * stateless LB
+          * CON : RR algo redirects the same traffic to all machines irrespective of their capacity.
+      2) Based on response time
+      3) Based on the no of requests for each server(weighted RR)
+
+
+* Statefull LB algo:
+      1) Maintain key,value pair at LB - easy but disadvantage is the size of the rows for key,value pair.
+      2) Range based distribution - like 1-1000 -> m1
+                                         1k-2k -> m2....
+          It solves the previous issue of size. if any machine goes down, redistribute the load. but it wil lead to lot of data transfer if           any machine goes down and resditribution happens. so not a very good algo
+      3) Modulo based : user_id % N. but if no of machines(N) change, all other gets reshuffled. 
+                        there is lof of data transfer, shuffling in the above algo. Consistent hashing solves most fo these issues.
+
+     ** 4) CONSISTENT HASHING **:
+          It provides flexibility in scaling as it provides minimal data movement during shard changes or if a machine goes down. divides             the laod equally. 
+
+
+
+* SHARDING : 
+Sharding is a database partitioning technique crucial for horizontal scaling. It involves distributing a large dataset across multiple databases or shards.
+
+Vertical Scaling: Upgrading resources in a single server.
+Horizontal Scaling: Distributing data across multiple servers.
+How Sharding Works
+
+1) Choosing a Sharding Key:
+The sharding key determines how data is distributed across shards. A good key ensures even distribution and easy access.
+Example: Using user_id as a sharding key to keep all data for one user together on the same shard】.
+
+3) User to Shard Mapping:
+Mapping algorithms must ensure minimal load skew and easy addition/removal of shards.
+
+Approaches to Sharding
+* Modulo-based Sharding: Uses the modulo operation to determine the shard. Simple but fails during shard scaling as it causes data redistribution.
+* Range-based Sharding: Assigns shards based on predefined data ranges.
+* Consistent Hashing: Provides flexibility in scaling as it requires minimal data movement during shard changes.
+  
+Optimizing Sharding
+Data Transfer: When adding or removing shards, data transfer should be optimized to occur with minimal impact on availability
