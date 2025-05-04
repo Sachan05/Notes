@@ -33,6 +33,12 @@ It's not, the reasons being:
 
 So it is better to decouple code and storage. However, the only downside of decoupling is the additional latency of going from one machine to another (code to the database).
 
+* We shoul ddecouple business logic and storage :
+  * storage will also be unavailable during deployment time.
+  * different specialised hardware are required for running code(high gpu, RAM, cpu) and storage(HDD).
+  * Scaling will be difficult. both server and storage needs to scaled up together even if it's not required.
+  *  Only disadvantage is increased latency due to extra network hop for each request from app server to storage machine.
+
 ---
 title: Introduction to the Application server.
 description: Establishing the need of an application understanding it’s working.
