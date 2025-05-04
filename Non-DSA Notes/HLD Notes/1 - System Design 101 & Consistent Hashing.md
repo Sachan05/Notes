@@ -367,23 +367,26 @@ The load balancer ensures that requests from the same user go to the same server
 
 
 * SHARDING : 
-Sharding is a database partitioning technique crucial for horizontal scaling. It involves distributing a large dataset across multiple databases or shards.
+    Sharding is a database partitioning technique crucial for horizontal scaling. It involves distributing a large dataset across multiple      databases or shards.
 
-Vertical Scaling: Upgrading resources in a single server.
-Horizontal Scaling: Distributing data across multiple servers.
-How Sharding Works
-
-1) Choosing a Sharding Key:
-The sharding key determines how data is distributed across shards. A good key ensures even distribution and easy access.
-Example: Using user_id as a sharding key to keep all data for one user together on the same shard】.
-
-3) User to Shard Mapping:
-Mapping algorithms must ensure minimal load skew and easy addition/removal of shards.
-
-Approaches to Sharding
-* Modulo-based Sharding: Uses the modulo operation to determine the shard. Simple but fails during shard scaling as it causes data redistribution.
-* Range-based Sharding: Assigns shards based on predefined data ranges.
-* Consistent Hashing: Provides flexibility in scaling as it requires minimal data movement during shard changes.
+    Vertical Scaling: Upgrading resources in a single server.
+    Horizontal Scaling: Distributing data across multiple servers.
   
-Optimizing Sharding
-Data Transfer: When adding or removing shards, data transfer should be optimized to occur with minimal impact on availability
+    How Sharding Works
+    1) Choosing a Sharding Key:
+    The sharding key determines how data is distributed across shards. A good key ensures even distribution and easy access.
+    Example: Using user_id as a sharding key to keep all data for one user together on the same shard】.
+    
+    3) User to Shard Mapping:
+    Mapping algorithms must ensure minimal load skew and easy addition/removal of shards.
+    
+    Approaches to Sharding
+    * Modulo-based Sharding: Uses the modulo operation to determine the shard. Simple but fails during shard scaling as it causes data     
+      redistribution.
+    * Range-based Sharding: Assigns shards based on predefined data ranges.
+    * Consistent Hashing: Provides flexibility in scaling as it requires minimal data movement during shard changes.
+      
+    Optimizing Sharding
+    Data Transfer: When adding or removing shards, data transfer should be optimized to occur with minimal impact on availability
+
+* Replication : it is creating and maintaing duplicate copies of Database in different servers. it is also a scaling technique but it create only multiple copies of same data in multiple nodes.
