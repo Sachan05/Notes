@@ -317,7 +317,7 @@ Horizontal Scaling :
 
     
 
-**Load Balancer** : 
+__Load Balancer__ : 
 Balances the load equally to all servers. in large applications we have multiple load balancers. 
 
 * To avoid spof, we ususally have multiple LB assigned at different IPs, it also reduces latency.
@@ -333,7 +333,7 @@ Balances the load equally to all servers. in large applications we have multiple
       * easy addition/removal of servers
       * less data transfer should take place if server is added or removed.
 
-* stateless vs statefull load balancing.
+* __stateless vs statefull load balancing__.
       
     * Stateless systems do not retain any session data. Requests are distributed randomly or using simple algorithms like round-robin, where each request is sent to the next server in a cyclic order.
 Benefits include easier scaling as there's no need for synchronization of state between servers【8:4†source】【8:3†source】.
@@ -343,7 +343,7 @@ Involves maintaining session information or state about the user's requests. Thi
 The load balancer ensures that requests from the same user go to the same server to maintain continuity
 
 
-* Stateless LB algo:
+* __Stateless LB algo__:
       1) Round Robin :
           * easy n light to implement
           * equal distribution of load
@@ -353,7 +353,7 @@ The load balancer ensures that requests from the same user go to the same server
       3) Based on the no of requests for each server(weighted RR)
 
 
-* Statefull LB algo:
+* __Statefull LB algo__:
       1) Maintain key,value pair at LB - easy but disadvantage is the size of the rows for key,value pair.
       2) Range based distribution - like 1-1000 -> m1
                                          1k-2k -> m2....
@@ -361,16 +361,16 @@ The load balancer ensures that requests from the same user go to the same server
       3) Modulo based : user_id % N. but if no of machines(N) change, all other gets reshuffled. 
                         there is lof of data transfer, shuffling in the above algo. Consistent hashing solves most fo these issues.
 
-     ** 4) CONSISTENT HASHING **:
+      4) __CONSISTENT HASHING__ :
           It provides flexibility in scaling as it provides minimal data movement during shard changes or if a machine goes down. divides             the laod equally. 
 
 
 
-* SHARDING : 
+* __SHARDING__ : 
     Sharding is a database partitioning technique crucial for horizontal scaling. It involves distributing a large dataset across multiple      databases or shards.
 
-    Vertical Scaling: Upgrading resources in a single server.
-    Horizontal Scaling: Distributing data across multiple servers.
+    __Vertical Scaling__: Upgrading resources in a single server.
+    __Horizontal Scaling__: Distributing data across multiple servers.
   
     How Sharding Works
     1) Choosing a Sharding Key:
@@ -389,19 +389,19 @@ The load balancer ensures that requests from the same user go to the same server
     Optimizing Sharding
     Data Transfer: When adding or removing shards, data transfer should be optimized to occur with minimal impact on availability
 
-* Replication : it is creating and maintaing duplicate copies of Database in different servers. it is also a scaling technique but it create only multiple copies of same data in multiple nodes.
+* __Replication__ : it is creating and maintaing duplicate copies of Database in different servers. it is also a scaling technique but it create only multiple copies of same data in multiple nodes.
 
-* Sharding VS Partitioning :
+* __Sharding VS Partitioning__ :
       Sharding vs Partitioning: What’s the Difference ?
 
     When scaling databases, two key strategies emerge -- Partitioning and Sharding. While they seem similar, but in reality they serves     
     different purposes.
     
-    🔹 Partitioning (Logical Separation)
+    🔹 __Partitioning__ (Logical Separation)
      👉 Think of partitioning like dividing a library into sections—Fiction, Non-fiction, Science, History. The data still resides in a 
         single database but is split logically (based on a column like date, region, etc.).
     
-    🔹 Sharding (Physical Separation)
+    🔹 __Sharding__ (Physical Separation)
      👉 Sharding is like having multiple branch libraries across different cities, each storing books for specific categories. Data is 
         distributed across multiple databases (shards), reducing load on a single system.
     
