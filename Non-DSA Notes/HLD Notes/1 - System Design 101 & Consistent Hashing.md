@@ -305,31 +305,31 @@ See you in the next lecture!
 
 
 
-Vertical Scaling : 
+Vertical Scaling :   
     * hardware limitations  
     * high cost  
     * single point of failure  
     
-Horizontal Scaling :
+Horizontal Scaling :  
     * No spof  
     * No h/w limitations  
     * can be expanded infinitely but system becomes more complex  
 
     
 
-__Load Balancer__ : 
-Balances the load equally to all servers. in large applications we have multiple load balancers. 
+__Load Balancer__ :  
+Balances the load equally to all servers. in large applications we have multiple load balancers.  
 
-* To avoid spof, we ususally have multiple LB assigned at different IPs, it also reduces latency.
+* To avoid spof, we ususally have multiple LB assigned at different IPs, it also reduces latency.  
   
-* we have different mechanisms for LB to check if servers are up or not.
-    * heartbeat - every server is configured in such a way that it send a heartbeat every 1 second to LB, if LB misses 3 or more beats from                   any server it assumes, the server is down.
+* we have different mechanisms for LB to check if servers are up or not.  
+    * heartbeat - every server is configured in such a way that it send a heartbeat every 1 second to LB, if LB misses 3 or more beats from                   any server it assumes, the server is down.  
     * Health check - every 1 second, LB will keep pinging the servers, if it recieves the acknowledgement, it assumes servers are up.
 
-* Routing Algorithms:
+* Routing Algorithms:  
       * fast 
-      * easy to implement
-      * llight
+      * easy to implement  
+      * llight  
       * easy addition/removal of servers
       * less data transfer should take place if server is added or removed.
 
