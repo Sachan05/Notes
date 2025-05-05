@@ -303,6 +303,7 @@ See you in the next lecture!
 
 ----------------------------------------------------------------------------------------------------------------------------
 
+___
 
 
 Vertical Scaling :   
@@ -416,4 +417,11 @@ The load balancer ensures that requests from the same user go to the same server
 
 
 
+
+
+***
+
+
    [lecture 2 notes] (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F251%2F855%2Foriginal%2FSystem_Design___Load_Balancing_and_Consistent_Hashing___3rd_March.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250505%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250505T222851Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3Dff1daf33c34fe1204650f51bd1e56d913e89f0917077212d1e39401cc0b0aa62&resourceId=974b6aff-f986-4584-92a9-ded3df3097c8&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
+
+[lecture 3 notes] (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F252%2F401%2Foriginal%2FSystem_Design____Caching__5th_March_.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250505%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250505T222853Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D01db7cee2ad67868471a26bb157cc370eccd239dd250cb932467d8b13e9d0bc7&resourceId=6a700bb9-0d2d-49db-b0dc-c3782407f4b4&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
