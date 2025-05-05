@@ -306,12 +306,12 @@ See you in the next lecture!
 
 
 Vertical Scaling : 
-    * hardware limitations
-    * high cost
-    * single point of failure
+    ..* hardware limitations
+    ..* high cost
+    ..* single point of failure
     
 Horizontal Scaling :
-    * No spof
+    ..* No spof
     * No h/w limitations
     * can be expanded infinitely but system becomes more complex
 
