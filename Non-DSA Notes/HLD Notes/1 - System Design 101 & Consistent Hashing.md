@@ -390,3 +390,25 @@ The load balancer ensures that requests from the same user go to the same server
     Data Transfer: When adding or removing shards, data transfer should be optimized to occur with minimal impact on availability
 
 * Replication : it is creating and maintaing duplicate copies of Database in different servers. it is also a scaling technique but it create only multiple copies of same data in multiple nodes.
+
+* Sharding VS Partitioning :
+      Sharding vs Partitioning: What’s the Difference ?
+
+    When scaling databases, two key strategies emerge -- Partitioning and Sharding. While they seem similar, but in reality they serves     
+    different purposes.
+    
+    🔹 Partitioning (Logical Separation)
+     👉 Think of partitioning like dividing a library into sections—Fiction, Non-fiction, Science, History. The data still resides in a 
+        single database but is split logically (based on a column like date, region, etc.).
+    
+    🔹 Sharding (Physical Separation)
+     👉 Sharding is like having multiple branch libraries across different cities, each storing books for specific categories. Data is 
+        distributed across multiple databases (shards), reducing load on a single system.
+    
+    💡 Key Difference?
+    • Partitioning optimizes query performance within one DB.
+    • Sharding enables horizontal scaling across multiple DBs.
+    
+    💡 Real-World Use Cases:
+     ✅ Partitioning – Storing financial transactions by month/year in a banking app for faster retrieval.
+     ✅ Sharding – A global social media platform where user data is stored in different databases based on geolocation.
