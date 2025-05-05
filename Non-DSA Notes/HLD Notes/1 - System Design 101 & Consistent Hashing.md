@@ -330,8 +330,8 @@ Balances the load equally to all servers. in large applications we have multiple
       * fast 
       * easy to implement  
       * llight  
-      * easy addition/removal of servers
-      * less data transfer should take place if server is added or removed.
+      * easy addition/removal of servers  
+      * less data transfer should take place if server is added or removed.  
 
 * __stateless vs statefull load balancing__.
       
@@ -343,72 +343,72 @@ Involves maintaining session information or state about the user's requests. Thi
 The load balancer ensures that requests from the same user go to the same server to maintain continuity
 
 
-* __Stateless LB algo__:
-      1) Round Robin :
-          * easy n light to implement
-          * equal distribution of load
-          * stateless LB
-          * CON : RR algo redirects the same traffic to all machines irrespective of their capacity.
-      2) Based on response time
-      3) Based on the no of requests for each server(weighted RR)
+* __Stateless LB algo__:  
+      1) Round Robin :  
+          * easy n light to implement  
+          * equal distribution of load  
+          * stateless LB  
+          * CON : RR algo redirects the same traffic to all machines irrespective of their capacity.  
+      2) Based on response time  
+      3) Based on the no of requests for each server(weighted RR)  
 
 
-* __Statefull LB algo__:
-      1) Maintain key,value pair at LB - easy but disadvantage is the size of the rows for key,value pair.
-      2) Range based distribution - like 1-1000 -> m1
-                                         1k-2k -> m2....
-          It solves the previous issue of size. if any machine goes down, redistribute the load. but it wil lead to lot of data transfer if           any machine goes down and resditribution happens. so not a very good algo
-      3) Modulo based : user_id % N. but if no of machines(N) change, all other gets reshuffled. 
-                        there is lof of data transfer, shuffling in the above algo. Consistent hashing solves most fo these issues.
+* __Statefull LB algo__:  
+      1) Maintain key,value pair at LB - easy but disadvantage is the size of the rows for key,value pair.  
+      2) Range based distribution - like 1-1000 -> m1  
+                                         1k-2k -> m2....  
+          It solves the previous issue of size. if any machine goes down, redistribute the load. but it wil lead to lot of data transfer if           any machine goes down and resditribution happens. so not a very good algo  
+      3) Modulo based : user_id % N. but if no of machines(N) change, all other gets reshuffled.
+                        there is lof of data transfer, shuffling in the above algo. Consistent hashing solves most for these issues.  
 
-      4) __CONSISTENT HASHING__ :
-          It provides flexibility in scaling as it provides minimal data movement during shard changes or if a machine goes down. divides             the laod equally. 
+      4) __CONSISTENT HASHING__ :  
+          It provides flexibility in scaling as it provides minimal data movement during shard changes or if a machine goes down. divides             the laod equally.  
 
 
 
-* __SHARDING__ : 
-    Sharding is a database partitioning technique crucial for horizontal scaling. It involves distributing a large dataset across multiple      databases or shards.
+* __SHARDING__ :  
+    Sharding is a database partitioning technique crucial for horizontal scaling. It involves distributing a large dataset across multiple      databases or shards.  
 
-    __Vertical Scaling__: Upgrading resources in a single server.
-    __Horizontal Scaling__: Distributing data across multiple servers.
+    __Vertical Scaling__: Upgrading resources in a single server.  
+    __Horizontal Scaling__: Distributing data across multiple servers.  
   
-    How Sharding Works
-    1) Choosing a Sharding Key:
+    How Sharding Works  
+    1) Choosing a Sharding Key:  
     The sharding key determines how data is distributed across shards. A good key ensures even distribution and easy access.
-    Example: Using user_id as a sharding key to keep all data for one user together on the same shard】.
+    Example: Using user_id as a sharding key to keep all data for one user together on the same shard】.  
     
-    3) User to Shard Mapping:
+    3) User to Shard Mapping:  
     Mapping algorithms must ensure minimal load skew and easy addition/removal of shards.
     
-    Approaches to Sharding
+    Approaches to Sharding  
     * Modulo-based Sharding: Uses the modulo operation to determine the shard. Simple but fails during shard scaling as it causes data     
-      redistribution.
-    * Range-based Sharding: Assigns shards based on predefined data ranges.
-    * Consistent Hashing: Provides flexibility in scaling as it requires minimal data movement during shard changes.
+      redistribution.  
+    * Range-based Sharding: Assigns shards based on predefined data ranges.  
+    * Consistent Hashing: Provides flexibility in scaling as it requires minimal data movement during shard changes.  
       
-    Optimizing Sharding
-    Data Transfer: When adding or removing shards, data transfer should be optimized to occur with minimal impact on availability
+    Optimizing Sharding  
+    Data Transfer: When adding or removing shards, data transfer should be optimized to occur with minimal impact on availability  
 
-* __Replication__ : it is creating and maintaing duplicate copies of Database in different servers. it is also a scaling technique but it create only multiple copies of same data in multiple nodes.
+* __Replication__ : it is creating and maintaing duplicate copies of Database in different servers. it is also a scaling technique but it create only multiple copies of same data in multiple nodes.  
 
-* __Sharding VS Partitioning__ :
-      Sharding vs Partitioning: What’s the Difference ?
+* __Sharding VS Partitioning__ :  
+      Sharding vs Partitioning: What’s the Difference ?  
 
     When scaling databases, two key strategies emerge -- Partitioning and Sharding. While they seem similar, but in reality they serves     
-    different purposes.
+    different purposes.  
     
-    🔹 __Partitioning__ (Logical Separation)
+    🔹 __Partitioning__ (Logical Separation)  
      👉 Think of partitioning like dividing a library into sections—Fiction, Non-fiction, Science, History. The data still resides in a 
-        single database but is split logically (based on a column like date, region, etc.).
+        single database but is split logically (based on a column like date, region, etc.).  
     
-    🔹 __Sharding__ (Physical Separation)
+    🔹 __Sharding__ (Physical Separation)  
      👉 Sharding is like having multiple branch libraries across different cities, each storing books for specific categories. Data is 
-        distributed across multiple databases (shards), reducing load on a single system.
+        distributed across multiple databases (shards), reducing load on a single system.  
     
-    💡 Key Difference?
-    • Partitioning optimizes query performance within one DB.
-    • Sharding enables horizontal scaling across multiple DBs.
+    💡 Key Difference?  
+    • Partitioning optimizes query performance within one DB.  
+    • Sharding enables horizontal scaling across multiple DBs.  
     
-    💡 Real-World Use Cases:
-     ✅ Partitioning – Storing financial transactions by month/year in a banking app for faster retrieval.
-     ✅ Sharding – A global social media platform where user data is stored in different databases based on geolocation.
+    💡 Real-World Use Cases:  
+     ✅ Partitioning – Storing financial transactions by month/year in a banking app for faster retrieval.  
+     ✅ Sharding – A global social media platform where user data is stored in different databases based on geolocation.  
