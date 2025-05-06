@@ -247,6 +247,11 @@ card_type: cue_card
 
 ## Consistent Hashing 
 
+* It is a method used to distribute load across multiple machines effectively.  
+* Involves using a hash function to map both user IDs and server IDs onto a consistent hashing ring.  
+* For any request, the server is allocated by iterating the ring in a clockwise direction and selecting the first server encountered.  
+* This method minimizes data movement when adding or removing machines.  
+
 Imagine a circle with points from $[0, 10^{18}]$. Imagine there is a hash function H1, which maps every machineId to a number in $[0, 10^{18}]$, which you then mark on the circle. Similarly, there is another hash function H which maps userId to $[0, 10^{18}]$. 
 
 Let’s assume we assign a user to be present on the first machine in the cyclic order from the hash of the user. 
