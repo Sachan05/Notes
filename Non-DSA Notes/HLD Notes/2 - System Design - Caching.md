@@ -62,7 +62,7 @@ card_type: cue_card
 ## Caching
 
 The process of storing things closer to you or in a faster storage system so that you can get them very fast can be termed caching. 
-Caching happens at different places. The first place we start caching is the browser. Browser stores/caches things that you need to access frequently. Now let’s look at different levels of caching.
+Caching happens at different places. Caches can exist at various levels, such as application server cache, browser cache, etc. Caching reduces latency by storing frequently accessed data closer to the user . It utilizes RAM for ultra-fast data access, but sometimes involves SSDs or hard disks depending on requirements and cost considerations . Now let’s look at different levels of caching.
 
 ### Types of caching -
 1. In-Browser caching
@@ -84,7 +84,16 @@ How does browser know if IP on DNS has changed? Short answer, it does not.
 Then, how can it remain in sync? 
 
 1. TTL (Time to live): I only store entries with an expiry time (let's say valid for the next 30 mins). So, post 30 mins, browser will re-fetch when entry is asked for. 
-2. Incase of IP caching, if the access to IP fails, it can invalidate the entry, so that on retry, we try with DNS again for IP (incase it has changed). 
+2. Incase of IP caching, if the access to IP fails, it can invalidate the entry, so that on retry, we try with DNS again for IP (incase it has changed).
+
+   
+Client-Side Cache (Browser Cache):  
+  Stores web elements like HTML, CSS, images, and other media on the user's device to avoid repeated downloads from the server .  
+Server-Side Cache:  
+  Commonly used for session handling and reducing load times by storing server responses that are reused for multiple user requests .  
+App-Server Cache:  
+  Data is stored in application memory, and this cache is used for high-speed access to application data .  
+  
 
 ---
 title: CDN.  
@@ -94,6 +103,28 @@ card_type: cue_card
 ---
 
 ## 2: CDN ( Content Delivery Network) - for static data
+
+__Stores files like images and videos close to the user, optimizing load times by reducing geographical data transfer delays .__  
+
+A Content Delivery Network (CDN) is a large distributed system of servers deployed in multiple data centers across the internet. The goal of a CDN is to serve content to end-users with high availability and high performance. CDNs are especially beneficial for websites with heavy traffic or geographically diverse audiences.  
+
+How CDNs Work  
+CDN networks store cached versions of content across multiple regions. When a user requests a piece of content (like a video or image), the request is routed to the closest CDN server. This reduces latency, improves load times, and increases site reliability.  
+
+Use Cases and Examples  
+Streaming Services: Platforms like Netflix and Hotstar utilize CDNs to ensure fast video streaming across different regions. For instance, during live cricket matches, CDNs help in distributing the live stream from the stadium to viewers across the globe swiftly.  
+
+Website Content: Websites store static content such as images, CSS, and JavaScript files on CDN servers to reduce server load and improve user experience.  
+
+Benefits of CDNs  
+Reduced Latency: By serving content from a location closer to the user, CDNs decrease the physical distance that data must travel and therefore reduce latency.  
+Load Balancing: CDNs use load balancing to distribute traffic efficiently, ensuring that no single server is overwhelmed, which helps in managing traffic spikes, such as during major events like global product launches or live sports .  
+Scalability: CDNs allow scalability for businesses to serve a global audience without upgrading their primary infrastructure frequently.  
+
+Examples of CDN Providers  
+Akamai: Known for providing extensive CDN services, supporting high-speed and high-availability content viewing .
+CloudFront: A CDN operated by AWS, supporting integration with various AWS services such as S3 for efficient data access .
+___  
 
 What happens when you try to load any website including del.icio.us? You will send a request and then get back in response a HTML file, some JS files, and the webpage could have some media files (images/videos). 
 
@@ -143,13 +174,14 @@ duration: 300
 card_type: cue_card  
 ---
 
-## 3: Local Caching
+## 3: Local Caching  
 It is caching done on the application server so that we don't have to hit the database repeatedly to access data.
 
 
-## 4: Global Caching
-(This will be discussed in more detail in the next class)
-This is also termed In-memory caching. In practice, systems like Redis and Memcache help to fetch actual or derived kinds of data quickly.
+## 4: Global Caching  
+(This will be discussed in more detail in the next class)  
+Used for data needed by multiple servers, stored in a common location .    
+This is also termed In-memory caching. In practice, systems like Redis and Memcache help to fetch actual or derived kinds of data quickly.  
 
 ---
 title: Problems related to caching.  
@@ -166,18 +198,23 @@ There are also two things related to the cache that you can derive from the disc
 
 __There are a few problems that you may face:__
 * __Data can become stale and inconsistent with time (Data in Database - actual source of truth - changes. But is not reflected in cache)__
-* __The cache can become full due to its small storage capacity.__
+* __The cache can become full due to its small storage capacity.__  
 
+So what do you think will be the solution to these two problems:  
+1. What do you have that doesn’t become inconsistent?  
+2. How can you add entries if the cache is full?  
 
+__Solutions__
+* __Cache Invalidation Strategies:__
+  Time-to-Live (TTL) ensures cache is refreshed periodically .  
+  Write-through, write-back, and write-around strategies maintain cache and database consistency .  
 
-So what do you think will be the solution to these two problems:
-
-1. What do you have that doesn’t become inconsistent?
-2. How can you add entries if the cache is full?
+* __Cache Eviction Policies:__  
+  Employ strategies like Least Recently Used (LRU) to free up space when the cache is full .  
 
 
 ---
-title: Case Invalidation Strategy.  
+title: Case Invalidation Strategy.  or Cache writing strategies.
 description: Discussing Case Invalidation Strategies as a possible solution to the first problem.  
 duration: 600   
 card_type: cue_card  
@@ -202,8 +239,8 @@ This can be done by the strategies like Write through cache, Write back cache, o
  Anything to be written is database passes from cache first(there can be multiple cache machines), storing it (updating cache), and then updating it to the database and returning success. If failed, changes will be reverted in the cache. 
  It makes the writing slower but reads much faster. For a read-heavy system, this could be a great approach.
  
- * __Highly Consistent__
- * __write latency is high because of increased network hops__
+  * __Highly Consistent__
+  * __write latency is high because of increased network hops__
 
  ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/553/original/Screenshot_2023-09-20_184357.png?1695215911)
  
@@ -211,17 +248,15 @@ This can be done by the strategies like Write through cache, Write back cache, o
 
  2) **Write back cache:** First, the write is written in the cache. The moment write in the cache succeeds, you return success to the client. Data is then synced to the database asynchronously (without blocking current ongoing request).. The method is preferred where you don't care about the data loss immediately, like in an analytic system where exact data in the DB doesn't matter, and analytical trends analysis won't be affected if we lose data or two. It is inconsistent, but it will give very high throughput and very low latency.
  
- * __very low latency due to lesser network hops__
- * __high chances of data loss, highly inconsistent__ : if cache goes down before updating DB, there is a chance of permanent data loss.
+  * __very low latency due to lesser network hops__
+  * __high chances of data loss, highly inconsistent__ : if cache goes down before updating DB, there is a chance of permanent data loss.
  
 
  3) **Write around cache:** Here, the writes are done directly in the database and then it syncs up with cache periodically. the cache might be out of sync with the database. Hence we can use TTL or any similar mechanism to fetch the data from the database to cache to sync with it.
  
- * __This is similar to TTL, cache and DB will be out of sync for some period__
+  * __This is similar to TTL, cache and DB will be out of sync for some period__
  
- 
- 
- * In all mechanisms read operations happens first from cache. 
+  * In all mechanisms read operations happens first from cache. 
  
  
 
@@ -238,12 +273,17 @@ Well, for this, you will be using an eviction strategy.
 
 ## Cache eviction 
 There are various eviction strategies to remove data from the cache to make space for new writes. Some of them are:
-* FIFO (First In, First Out)
-* LRU (Least Recently Used)
-* LIFO (Last In, First Out)
+* FIFO (First In, First Out) - Manages cache entries based on their order of entry or exit
+* LRU (Least Recently Used) - Removes the least recently accessed data when the cache is full
+* LIFO (Last In, First Out) - Manages cache entries based on their order of entry or exit
 * MRU (Most Recently Used)
 The eviction strategy must be chosen based on the data that is more likely to be accessed. The caching strategy should be designed in such a way that you have a lot of cache hits than a cache miss.
 
+
+
+__Trade-offs in Caching__
+ * Consistency vs Latency: Immediate consistency can increase latency while eventual consistency can optimize speed but may serve outdated     data during a TTL cycle.  
+ * Cache Size Constraints: Cache usually represents a fraction of the database size, requiring efficient eviction policies.  
 
 ---
 title: Homework for the next class
@@ -285,4 +325,20 @@ Downloading files from an object storage can be a very slow process. If it takes
 * if the same data is stored in multiple places, or same cache in multiple servers, it leads to increased inconsistency in data and wastage 
   of space. In such case, we can use global cache like reddis. like when you want to store some common data as cache.
 * Reddis can be used as local cache or app cache or global cache. its just a key value type of cache.
+
+
+
+
+
+*** 
+
+
+
+
+[lecture 4] (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F253%2F373%2Foriginal%2FSystem_Design___Caching_contd._.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250506%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250506T220941Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D2fee1767b864cf02296aa19ac0edd9f9975e182a67a9c1dda2eac5ebabf21c41&resourceId=9af7039f-2628-4bcc-be99-e9628ffdf376&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
+
+*** 
+
+[Lecture 5] (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F253%2F814%2Foriginal%2FCaching_Case_Studies___10th_March.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250503%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250503T111037Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D066d31767454f9c2384a7668f7c38c7d4fcb0995ceac3b70c59f0251d1a04298&resourceId=ac62e478-2aab-485c-b4c5-35cb38f9db2a&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
+
 
