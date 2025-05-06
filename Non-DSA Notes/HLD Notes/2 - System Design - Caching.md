@@ -164,9 +164,9 @@ There are also two things related to the cache that you can derive from the disc
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/552/original/Screenshot_2023-09-20_184350.png?1695215890)
 
-There are a few problems that you may face:
-* Data can become stale and inconsistent with time (Data in Database - actual source of truth - changes. But is not reflected in cache)
-* The cache can become full due to its small storage capacity.
+__There are a few problems that you may face:__
+* __Data can become stale and inconsistent with time (Data in Database - actual source of truth - changes. But is not reflected in cache)__
+* __The cache can become full due to its small storage capacity.__
 
 
 
@@ -193,33 +193,33 @@ We will look at more cache invalidation strategies in this doc through case stud
 ### Keeping cache and DB in sync
 This can be done by the strategies like Write through cache, Write back cache, or Write around the cache.
 
-**Write through cache:** 
-Here, first the cache is updated and it sends back acknowledgement and then the DB is updated.
-Anything to be written is database passes from cache first(there can be multiple cache machines), storing it (updating cache), and then updating it to the database and returning success. If failed, changes will be reverted in the cache. 
-It makes the writing slower but reads much faster. For a read-heavy system, this could be a great approach.
+* **Write through cache:** 
+ Here, first the cache is updated and it sends back acknowledgement and then the DB is updated.
+ Anything to be written is database passes from cache first(there can be multiple cache machines), storing it (updating cache), and then updating it to the database and returning success. If failed, changes will be reverted in the cache. 
+ It makes the writing slower but reads much faster. For a read-heavy system, this could be a great approach.
+ 
+ * __Highly Consistent__
+ * __write latency is high because of increased network hops__
 
-* __Highly Consistent__
-* __write latency is high because of increased network hops__
+ ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/553/original/Screenshot_2023-09-20_184357.png?1695215911)
+ 
+ There are other methodologies as well, like
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/553/original/Screenshot_2023-09-20_184357.png?1695215911)
+ * **Write back cache:** First, the write is written in the cache. The moment write in the cache succeeds, you return success to the client. Data is then synced to the database asynchronously (without blocking current ongoing request).. The method is preferred where you don't care about the data loss immediately, like in an analytic system where exact data in the DB doesn't matter, and analytical trends analysis won't be affected if we lose data or two. It is inconsistent, but it will give very high throughput and very low latency.
+ 
+ * __very low latency due to lesser network hops__
+ * __high chances of data loss, highly inconsistent__ : if cache goes down before updating DB, there is a chance of permanent data loss.
+ 
 
-There are other methodologies as well, like
-
-**Write back cache:** First, the write is written in the cache. The moment write in the cache succeeds, you return success to the client. Data is then synced to the database asynchronously (without blocking current ongoing request).. The method is preferred where you don't care about the data loss immediately, like in an analytic system where exact data in the DB doesn't matter, and analytical trends analysis won't be affected if we lose data or two. It is inconsistent, but it will give very high throughput and very low latency.
-
-* __very low latency due to lesser network hops__
-* __high chances of data loss, highly inconsistent__ : if cache goes down before updating DB, there is a chance of permanent data loss.
-
-
-**Write around cache:** Here, the writes are done directly in the database and then it syncs up with cache periodically. the cache might be out of sync with the database. Hence we can use TTL or any similar mechanism to fetch the data from the database to cache to sync with it.
-
-* __This is similar to TTL, cache and DB will be out of sync for some period__
-
-
-
-* In all mechanisms read operations happens first from cache. 
-
-
+ * **Write around cache:** Here, the writes are done directly in the database and then it syncs up with cache periodically. the cache might be out of sync with the database. Hence we can use TTL or any similar mechanism to fetch the data from the database to cache to sync with it.
+ 
+ * __This is similar to TTL, cache and DB will be out of sync for some period__
+ 
+ 
+ 
+ * In all mechanisms read operations happens first from cache. 
+ 
+ 
 
 ---
 title: Cache eviction.  
