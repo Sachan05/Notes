@@ -187,13 +187,17 @@ We will be discussing ways to prevent these problems.
 One solution that is proposed so that cache doesn’t become stale is
 ### TTL (Time to Live) 
 This strategy can be used if there is no problem with the cache being invalid for a very short time, so you can have a periodic refresh. Entries in the cache will be valid for only a period. And after that, to again get the entries, you need to fetch them again.
-So, for example, if you cache an entry X at timestamp T with TTL of 60 seconds, then for all requests asking for entry X within 60 seconds of T, you read directly from cache. When you go asking for entry X at timestamp T+61, the entry X is gone and you need to fetch again. 
+So, for example, if you cache an entry X at timestamp T with TTL of 60 seconds, then for all requests asking for entry X within 60 seconds of T, you read directly from cache. When you go asking for entry X at timestamp T+61, the entry X is gone and you need to fetch again.
+TTL may be good where eventual consistency is required like total no of views or like on post or video but in cases like banking it may 
+  not be a good idea.
+__but in this case the cache and DB are not in sync.__
+
 
 We will look at more cache invalidation strategies in this doc through case studies. 
 ### Keeping cache and DB in sync
 This can be done by the strategies like Write through cache, Write back cache, or Write around the cache.
 
-* **Write through cache:** 
+1) **Write through cache:** 
  Here, first the cache is updated and it sends back acknowledgement and then the DB is updated.
  Anything to be written is database passes from cache first(there can be multiple cache machines), storing it (updating cache), and then updating it to the database and returning success. If failed, changes will be reverted in the cache. 
  It makes the writing slower but reads much faster. For a read-heavy system, this could be a great approach.
@@ -205,13 +209,13 @@ This can be done by the strategies like Write through cache, Write back cache, o
  
  There are other methodologies as well, like
 
- * **Write back cache:** First, the write is written in the cache. The moment write in the cache succeeds, you return success to the client. Data is then synced to the database asynchronously (without blocking current ongoing request).. The method is preferred where you don't care about the data loss immediately, like in an analytic system where exact data in the DB doesn't matter, and analytical trends analysis won't be affected if we lose data or two. It is inconsistent, but it will give very high throughput and very low latency.
+ 2) **Write back cache:** First, the write is written in the cache. The moment write in the cache succeeds, you return success to the client. Data is then synced to the database asynchronously (without blocking current ongoing request).. The method is preferred where you don't care about the data loss immediately, like in an analytic system where exact data in the DB doesn't matter, and analytical trends analysis won't be affected if we lose data or two. It is inconsistent, but it will give very high throughput and very low latency.
  
  * __very low latency due to lesser network hops__
  * __high chances of data loss, highly inconsistent__ : if cache goes down before updating DB, there is a chance of permanent data loss.
  
 
- * **Write around cache:** Here, the writes are done directly in the database and then it syncs up with cache periodically. the cache might be out of sync with the database. Hence we can use TTL or any similar mechanism to fetch the data from the database to cache to sync with it.
+ 3) **Write around cache:** Here, the writes are done directly in the database and then it syncs up with cache periodically. the cache might be out of sync with the database. Hence we can use TTL or any similar mechanism to fetch the data from the database to cache to sync with it.
  
  * __This is similar to TTL, cache and DB will be out of sync for some period__
  
@@ -281,5 +285,4 @@ Downloading files from an object storage can be a very slow process. If it takes
 * if the same data is stored in multiple places, or same cache in multiple servers, it leads to increased inconsistency in data and wastage 
   of space. In such case, we can use global cache like reddis. like when you want to store some common data as cache.
 * Reddis can be used as local cache or app cache or global cache. its just a key value type of cache.
-* TTL may be good where *eventual consistency is required like total no of views or like on post or video but in cases like banking it may 
-  not be a good idea.
+
