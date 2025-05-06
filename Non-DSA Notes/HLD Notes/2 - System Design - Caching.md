@@ -11,10 +11,10 @@ In the last class, we learned that when we type something on the browser( or sea
 And when you go from one machine to multiple machines, you need a load balancer to distribute traffic uniformly, but after a point when the amount of information cannot fit into a single machine, then the model needs to shard. It can be done using consistent hashing.
 
 ---
-title: Issues in storing code and database on the same machine.
-description: Discussing decoupling of code and storage, but its downsides as well.
-duration: 300 
-card_type: cue_card
+title: Issues in storing code and database on the same machine.  
+description: Discussing decoupling of code and storage, but its downsides as well.  
+duration: 300   
+card_type: cue_card  
 ---
 
 However, the machines had both the code and storage in the previous model. **Do you think it is a good model?**
@@ -40,10 +40,10 @@ So it is better to decouple code and storage. However, the only downside of deco
   *  Only disadvantage is increased latency due to extra network hop for each request from app server to storage machine.
 
 ---
-title: Introduction to the Application server.
-description: Establishing the need of an application understanding it’s working.
-duration: 300 
-card_type: cue_card
+title: Introduction to the Application server.  
+description: Establishing the need of an application understanding it’s working.  
+duration: 300   
+card_type: cue_card  
 ---
 So it can be concluded that it is not ideal for storing code and database on the same machine. The approach is to separate the code and storage parts to increase efficiency. 
 
@@ -53,10 +53,10 @@ Different machines storing the same code running simultaneously are called **App
 
 
 ---
-title: Introduction to caching.
-description: Explaining what is caching and list its types, which we will cover individually in upcoming sections.
-duration: 300 
-card_type: cue_card
+title: Introduction to caching.  
+description: Explaining what is caching and list its types, which we will cover individually in upcoming sections.  
+duration: 300   
+card_type: cue_card  
 ---
 
 ## Caching
@@ -71,10 +71,10 @@ Caching happens at different places. The first place we start caching is the bro
 4. Global Caching
 
 ---
-title: In-Browser caching and CDN.
-description: Discussing the In-Browser caching and CDN.
-duration: 600 
-card_type: cue_card
+title: In-Browser caching and CDN.  
+description: Discussing the In-Browser caching and CDN.  
+duration: 600   
+card_type: cue_card  
 ---
 
 ## 1: In-Browser caching
@@ -87,13 +87,13 @@ Then, how can it remain in sync?
 2. Incase of IP caching, if the access to IP fails, it can invalidate the entry, so that on retry, we try with DNS again for IP (incase it has changed). 
 
 ---
-title: CDN.
-description: Discussing the In-Browser caching and CDN.
-duration: 600 
-card_type: cue_card
+title: CDN.  
+description: Discussing the In-Browser caching and CDN.  
+duration: 600   
+card_type: cue_card  
 ---
 
-## 2: CDN ( Content Delivery Network)
+## 2: CDN ( Content Delivery Network) - for static data
 
 What happens when you try to load any website including del.icio.us? You will send a request and then get back in response a HTML file, some JS files, and the webpage could have some media files (images/videos). 
 
@@ -131,13 +131,16 @@ Imagine, we take the example of Facebook / Instagram.
  - So, when the client finally makes the post, it sends some text, along with a single file_path or multiple of them. 
  - When post is stored in DB, you save the content, along with the list of files. 
  - Asynchronously, these files are also uploaded to CDN, and you get back CDN_url, which is also stored in the posts DB. 
- - On post fetch, you return CDN_url if that's available. 
+ - On post fetch, you return CDN_url if that's available.
+
+
+__we ususally store static(something that doesnt usually change like image or video doesnt gert updated) or media content in CDNs__
 
 ---
-title: Local and global caching.
-description: discussion of local and global caching.
-duration: 300 
-card_type: cue_card
+title: Local and global caching.  
+description: discussion of local and global caching.  
+duration: 300   
+card_type: cue_card  
 ---
 
 ## 3: Local Caching
@@ -149,10 +152,10 @@ It is caching done on the application server so that we don't have to hit the da
 This is also termed In-memory caching. In practice, systems like Redis and Memcache help to fetch actual or derived kinds of data quickly.
 
 ---
-title: Problems related to caching.
-description: Explaining the problems related to caching.
-duration: 300 
-card_type: cue_card
+title: Problems related to caching.  
+description: Explaining the problems related to caching.  
+duration: 300   
+card_type: cue_card  
 ---
 ## Problems related to caching
 There are also two things related to the cache that you can derive from the discussions so far. 
@@ -174,10 +177,10 @@ So what do you think will be the solution to these two problems:
 
 
 ---
-title: Case Invalidation Strategy.
-description: Discussing Case Invalidation Strategies as a possible solution to the first problem.
-duration: 600 
-card_type: cue_card
+title: Case Invalidation Strategy.  
+description: Discussing Case Invalidation Strategies as a possible solution to the first problem.  
+duration: 600   
+card_type: cue_card  
 ---
 We will be discussing ways to prevent these problems.
 ## Case Invalidation Strategy
@@ -191,8 +194,12 @@ We will look at more cache invalidation strategies in this doc through case stud
 This can be done by the strategies like Write through cache, Write back cache, or Write around the cache.
 
 **Write through cache:** 
+Here, first the cache is updated and it sends back acknowledgement and then the DB is updated.
 Anything to be written is database passes from cache first(there can be multiple cache machines), storing it (updating cache), and then updating it to the database and returning success. If failed, changes will be reverted in the cache. 
 It makes the writing slower but reads much faster. For a read-heavy system, this could be a great approach.
+
+* __Highly Consistent__
+* __write latency is high because of increased network hops__
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/553/original/Screenshot_2023-09-20_184357.png?1695215911)
 
@@ -200,13 +207,25 @@ There are other methodologies as well, like
 
 **Write back cache:** First, the write is written in the cache. The moment write in the cache succeeds, you return success to the client. Data is then synced to the database asynchronously (without blocking current ongoing request).. The method is preferred where you don't care about the data loss immediately, like in an analytic system where exact data in the DB doesn't matter, and analytical trends analysis won't be affected if we lose data or two. It is inconsistent, but it will give very high throughput and very low latency.
 
-**Write around cache:** Here, the writes are done directly in the database, and the cache might be out of sync with the database. Hence we can use TTL or any similar mechanism to fetch the data from the database to cache to sync with it.
+* __very low latency due to lesser network hops__
+* __high chances of data loss, highly inconsistent__ : if cache goes down before updating DB, there is a chance of permanent data loss.
+
+
+**Write around cache:** Here, the writes are done directly in the database and then it syncs up with cache periodically. the cache might be out of sync with the database. Hence we can use TTL or any similar mechanism to fetch the data from the database to cache to sync with it.
+
+* __This is similar to TTL, cache and DB will be out of sync for some period__
+
+
+
+* In all mechanisms read operations happens first from cache. 
+
+
 
 ---
-title: Cache eviction.
-description: Discussing the cache eviction as a possible solution for the second problem of how to add entries if the cache is full.
-duration: 300 
-card_type: cue_card
+title: Cache eviction.  
+description: Discussing the cache eviction as a possible solution for the second problem of how to add entries if the cache is full.  
+duration: 300   
+card_type: cue_card  
 ---
 
 Now let’s talk about the second question: How can you add entries if the cache is full?
@@ -250,4 +269,17 @@ Once you have the file path, you would have to go to object storage to download 
 Downloading files from an object storage can be a very slow process. If it takes 1 second to download these files, then you'd feel Scaler is slow. 
 
  - How do we make this process faster? 
- - Also, think about cache invalidation. In an ongoing contest, if you update test data, you would want that it is immediate for all users. How do you ensure 100% consistency? 
+ - Also, think about cache invalidation. In an ongoing contest, if you update test data, you would want that it is immediate for all users. How do you ensure 100% consistency?
+
+
+
+***
+
+
+
+* DB only stores and returns the url/path of the file that is big in size or media content (that is stored typically in S3 or CDN).
+* if the same data is stored in multiple places, or same cache in multiple servers, it leads to increased inconsistency in data and wastage 
+  of space. In such case, we can use global cache like reddis. like when you want to store some common data as cache.
+* Reddis can be used as local cache or app cache or global cache. its just a key value type of cache.
+* TTL may be good where *eventual consistency is required like total no of views or like on post or video but in cases like banking it may 
+  not be a good idea.
