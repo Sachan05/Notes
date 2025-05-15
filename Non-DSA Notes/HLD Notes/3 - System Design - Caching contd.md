@@ -33,7 +33,7 @@ Assumptions:
 It can be noted that input files and the expected output file can be changed. The modified changes should be immediately reflected in the code submissions.
 
 ---
-title: Solution using TTL and global cache.
+title: Solution using TTL and Global Cache and Local Cache.
 description: Discussion of solution using TTL and global cache.
 duration: 300 
 card_type: cue_card
@@ -48,11 +48,18 @@ Different approaches to solve the problem can be
 
 So TTL can be one of the approaches, but it is not a good one. You can choose TTL based on the cache miss rate or cache invalidation rate.
 ### Global Cache
+
+It doesn't really solve our problem because still for every user, for every problem we are transferring huge amount of data over the network.
 Storing the data in a single machine can also be an option, but there are two problems with this:
 1. If storing in memory, the remote machine has limited space and can run out of space quickly because the size of the input-output files is very large.
 2. The eviction rate will be very high, and the number of cache misses will be more.
 
 If instead you store it in the hard disk, then there is the issue of transferring huge amount of data on network. 
+
+
+### Local Cache :
+Storing input and output files for each problem in the local cache of each app servers will help to avoid network calls to fetch the files.
+There's no network overhead but if there is any change in i/p or o/p file it has to be changed in all of the app servers which is not a good idea.
 
 ---
 title: Better solution using File metadata
