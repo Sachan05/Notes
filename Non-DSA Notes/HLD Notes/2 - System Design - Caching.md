@@ -238,7 +238,8 @@ This can be done by the strategies like Write through cache, Write back cache, o
  Here, first the cache is updated and it sends back acknowledgement and then the DB is updated.
  Anything to be written is database passes from cache first(there can be multiple cache machines), storing it (updating cache), and then updating it to the database and returning success. If failed, changes will be reverted in the cache. 
  It makes the writing slower but reads much faster. For a read-heavy system, this could be a great approach.
- 
+
+  * __great for having immediate consistency__
   * __Highly Consistent__
   * __write latency is high because of increased network hops__
 
