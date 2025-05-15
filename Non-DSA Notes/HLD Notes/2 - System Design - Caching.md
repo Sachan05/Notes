@@ -330,16 +330,3 @@ Downloading files from an object storage can be a very slow process. If it takes
 
 
 
-
-*** 
-
-
-
-
-[lecture 4] (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F253%2F373%2Foriginal%2FSystem_Design___Caching_contd._.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250506%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250506T220941Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D2fee1767b864cf02296aa19ac0edd9f9975e182a67a9c1dda2eac5ebabf21c41&resourceId=9af7039f-2628-4bcc-be99-e9628ffdf376&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
-
-*** 
-
-[Lecture 5] (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F253%2F814%2Foriginal%2FCaching_Case_Studies___10th_March.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250503%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250503T111037Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D066d31767454f9c2384a7668f7c38c7d4fcb0995ceac3b70c59f0251d1a04298&resourceId=ac62e478-2aab-485c-b4c5-35cb38f9db2a&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
-
-
