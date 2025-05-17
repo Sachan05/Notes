@@ -283,8 +283,8 @@ The eviction strategy must be chosen based on the data that is more likely to be
 
 
 __Trade-offs in Caching__
- * Consistency vs Latency: Immediate consistency can increase latency while eventual consistency can optimize speed but may serve outdated     data during a TTL cycle.  
- * Cache Size Constraints: Cache usually represents a fraction of the database size, requiring efficient eviction policies.  
+ * __Consistency vs Latency: Immediate consistency can increase latency while eventual consistency can optimize speed but may serve outdated     data during a TTL cycle.__  
+ * __Cache Size Constraints: Cache usually represents a fraction of the database size, requiring efficient eviction policies.__  
 
 ---
 title: Homework for the next class
