@@ -220,9 +220,20 @@ __CAP Theorem:__ The CAP Theorem stands for Consistency, Availability, and Parti
 
     In the real world, most systems work under some form of compromise between availability and consistency. Some well-discussed examples       include:
 
-        - AP Systems (Available and Partition-tolerant): Systems that guarantee availability even when network partitions occur,                      potentially sacrificing consistency. They often leverage eventual consistency models【4:17†source】.
+    * AP Systems (Available and Partition-tolerant): Systems that guarantee availability even when network partitions occur,                      potentially sacrificing consistency. They often leverage eventual consistency models
+            - Even if there is a partition in the system, the system will continue to serve the request.
+            - Eventual consistent.
+            - 99% systems are A+P (Linkedin, FB, Insta, YT, etc)
+            
 
-        - CP Systems (Consistent and Partition-tolerant): Systems that maintain consistency across partitioned nodes, often at the expense            of availability
+    * CP Systems (Consistent and Partition-tolerant): Systems that maintain consistency across partitioned nodes, often at the expense            of availability
+            - In case of n/w partition, system will deny the request.
+            - 0.9% systems are C+P (financial systems, stock brokers, etc)
+            
+    * CA systems : 
+            - 0.1% systems are C+A
+            - BSE/NSE/HFTs, they use suopercomputers. 
+    
 
         An example given was LinkedIn or other social media platforms, where users may see different data versions temporarily until 
         eventual consistency is achieved
