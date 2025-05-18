@@ -166,3 +166,106 @@ card_type: cue_card
 
 For example, For highly consistent systems, if there are 1000 slaves, the Master-slave system will not work. We have to do more sharding. 
 
+***
+***
+
+
+
+In this class, we explored various concepts surrounding the architecture of distributed systems, focusing on data sharding, system replication, and different consistency models. These concepts are crucial for the design and management of scalable and resilient software systems.
+
+__Sharding__
+    Idea of distributing data across multiple DB machines so that we can store huge amount of data.
+    __each shard contains mutually exclusive and collectively exhaustive data.__
+    Sharding is a database architecture principle that involves partitioning the data into smaller, more manageable parts. Each partition       is known as a shard. The goal of sharding is to ensure that a single machine does not become a bottleneck in terms of performance or 
+    capacity.
+    
+    * Purpose of Sharding: Distributes data across multiple servers to manage large volumes of data efficiently. This distribution is 
+      crucial for handling the massive datasets of companies like Amazon and Facebook, which operate at a scale that individual machines          cannot manage
+
+    * Design Considerations:
+        - Data should be evenly distributed to ensure that all shards are equally utilized.
+        - Frequently accessed queries should ideally be resolved within a single shard (intra-shard) to optimize performance.
+        - Challenges arise during data redistribution when machines are added or removed, necessitating the use of techniques like                    consistent hashing to ensure even data distribution.
+        
+    * Implementation: Load balancers direct requests based on shard keys (e.g., user IDs), ensuring data is routed to the correct shard           without needing to connect directly to individual database servers
+
+__Replication__
+    Replication involves creating multiple copies of data to ensure high availability and reliability. It mitigates data loss in the event      of hardware failure and helps manage read loads
+    
+    Master-Slave Architecture: Typically used where one machine acts as the master, handling write operations, while other slave machines       replicate the data for read operations
+
+    Benefits:
+
+    Provides redundancy to prevent data loss.
+    Balances read traffic across multiple servers to prevent overload on a single node
+    
+    Consistency in Distributed Systems
+    Distributed systems must balance between Consistency, Availability, and Partition tolerance as stated in the CAP Theorem. The class         discussed these principles briefly:
+
+***    
+
+__CAP Theorem:__ The CAP Theorem stands for Consistency, Availability, and Partition Tolerance. It posits that in a distributed data store or network, you can only simultaneously achieve two out of the three guarantees: consistency, availability, and partition tolerance. Partition tolerance is generally a given in practical distributed systems, leaving the trade-off between consistency and availability:
+
+    * Consistency:
+    This means every read receives the most recent write. In distributed systems, this translates to "no stale reads," and it          
+    implies that all nodes see the same data at the same time. If a change occurs, the system reflects that change universally before           any subsequent reads.
+
+    * Availability:
+    Every request receives a (non-error) response, without guaranteeing it contains the most recent write. This means the system is             operational and responsive at all times. if healthy requests comes to healthy server but still server denies the requests(for some          internal reasons), this type of system is considered a system with low availability.
+      
+
+    * Partition Tolerance: 
+    The system continues to operate despite arbitrary message loss or failure of part of the system (i.e., network partitions).
+
+
+    In the real world, most systems work under some form of compromise between availability and consistency. Some well-discussed examples       include:
+
+        - AP Systems (Available and Partition-tolerant): Systems that guarantee availability even when network partitions occur,                      potentially sacrificing consistency. They often leverage eventual consistency models【4:17†source】.
+
+        - CP Systems (Consistent and Partition-tolerant): Systems that maintain consistency across partitioned nodes, often at the expense            of availability
+
+        An example given was LinkedIn or other social media platforms, where users may see different data versions temporarily until 
+        eventual consistency is achieved
+    
+    
+__PACELC Theorem:__ Extension to CAP Theorem
+        The PACELC Theorem extends the CAP framework by introducing a perspective on latency trade-offs during normal operations, not just          during failures. While CAP focuses on the trade-offs in the presence of a partition, PACELC addresses these trade-offs when the             system is not partitioned
+
+    Partition: Same meaning as in the CAP theorem. During partitions, there’s a choice between Availability and Consistency.
+
+    Availability vs Consistency: When no partitions exist (normally), the system decides between Latency and Consistency:
+
+    EL: Else Latency vs Consistency during non-failover conditions【4:10†source】.
+
+    Practical Implications
+    This theorem reminds designers that decisions also need to be tailored for non-failure operation states, such as the trade-off between      strong consistency (which typically incurs latency costs) and weaker forms like eventual consistency, which can be more performant but      less immediate.
+    
+    Examples
+    In practical use, a bank might prioritize consistency over availability to prevent scenarios such as double-spending due to eventual 
+    synchronization
+
+    
+* __Master Slave architecture__ :
+
+  1) Sync :
+      write operation is done on master node and then on each of slave node, when the slave node returns acknowledgement that write               operation is completed then master node returns success.
+         - it provides strong consistency
+         - write latency is high.
+     
+  2) Async :
+     here write operation happens on master node and it returns success. later on, the slave nodes are synced up with master node leading        to eventual consistency.
+         - Eventual consistency
+         - faster write
+         - write operation might be lost if master node goes down before sync.
+     
+
+  4) Quorum based approach :
+     Here, write operation is done on master node and then on any 1 of the slave node(or maybe 10% of the slave nodes) and it returns            success after write is done on any of the slave nodes.
+         - it gives eventual consistency
+         - faster write opertaion
+         - chances of data loss is also lesser.
+
+
+***
+
+
