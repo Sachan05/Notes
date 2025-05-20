@@ -309,3 +309,93 @@ Your task is to determine how to store data in the memory so that you are able t
 **Ans:** Such a transaction between two bank accounts has states. For example, let A transfers 1000 INR to B. When money has been deducted from A’s account, the transaction goes to **send_initiated** state (just a term). In case of successful transfer, the state of the A’s transaction is changed to **send_completed.** 
 However, let’s say due to some internal problem, money did not get deposited into B’s account. In such a case, the transaction on A's side is rolled back and 1000 INR is again added to A’s bank balance. This is how it is rolled back. You may have seen that money comes back after 1-2 days. This is because the bank re-attempts the money transfer. However, if there is a permanent failure, the transaction on A’s side is rolled back.
 
+***
+
+* SQL Databases: 
+   Use structured query language, designed for structured data storage, rigid schema, high consistency, and require complex joins.
+* NoSQL Databases:
+  Optimized for distributed data storage, flexible schema, eventual consistency, suited for unstructured data or large-scale data scenarios
+  
+* Strengths and Weaknesses:
+   SQL Strengths: Normalization avoids redundancy, fixed schema provides a reliable data structure.
+   SQL Weaknesses: Can become inefficient at very high scale due to complex joins and schema rigidity.
+   NoSQL Strengths: Flexible data model, horizontal scalability, designed for specific use cases .
+
+
+
+* Strengths of RDBMS :
+     * Normalization - Prevents redundancy(can lead to inconsistency) and anomalies in the database.
+     * Strong/Fixed Schema - Although it is possible to alter the table, it will be extremely slow as it will require complete table    
+                             rewrite.
+     * ACID Properties -
+          1) Atomicity - every transaction should execute completely or not at all. DB shouldn't be at partial state at any time.
+          2) Consistency - DB constraints are intact. single node. Data integrity. its not same as CAP cosnistency where there are no stale 
+                           reads. distributed nodes. all machines should be in sync.
+          3) Isolation - multiple transactions running simulataneously shouldn't interfere with each other.
+          4) Durability - Data should be persistenct on HDD.
+      * Provides Joins/ Aggregation/ Grouping/ complex queries.
+
+* Weakness of RDBMS :
+     * All strengths of sql RDBMS become weakness at large scale or in distibuted systems.
+     * Normalization
+     * Fixed schema
+     * ACID - sharding nullifies the ACID properties.
+ 
+
+***
+
+* SQL DB guarantess ACID properties only within a single server. In single server, we can acquire locks easily while on distributed 
+  systems, it is extremly difficult and slow to acquire locks.
+
+* Our default choice of DB should always be sql RDBMS, then we should come up with enough reasons to NOT use sql RDBMS. NOSQL DBs are 
+  desgined for specific usecases.
+
+* NOSQL - Not only SQL, Non relational DB. it Provides BASE properties.
+   * BA - Basically Available. it provides high availablity.
+   * S - soft state. transactions can be in partial state for some duration.
+   * E - Eventual consistency.
+
+* No SQL DBs automatically support sharding. SQL DBs require manual sharding.
+
+
+***
+
+
+
+* Choosing the right sharding key :
+   KEY which is used to decide on how to distribute the data across multiple DB machines.
+   It will also be used to route the queries to right DB machine while fetching the data.
+
+* Properties of a good sharding key :
+  
+   - Equal Data Load Distribution: Ensures data is evenly distributed across shards, prevents hotspots .
+   - High Cardinality: High number of unique values ensure even distribution .
+   - Part of Read/Write Request: Sharding key should be part of the most frequent access patterns for efficiency .
+   - No Fan-Out: Most accessed queries should hit only one or two shards to reduce load .
+   - Immutability: The sharding key should remain constant to avoid complex migrations .
+
+
+****
+
+
+
+Use Cases and Examples:
+
+* IRCTC Use Case:
+   Problem: Prevent double booking during peak TATKAAL booking.
+   Sharding Key: Proposed use of train ID instead of user ID or ticket ID to organize data efficiently during high traffic .
+
+* Banking System:
+   Problem: Handle high-frequency queries like balance checks, transaction history.
+   Sharding Key: Suggests using types of accounts as attributes for sharding, ensuring even distribution and quick access .
+
+* Messaging System:
+   Problem: Efficiently handle one-to-one and group messages.
+   Solution Scenarios:
+      Store messages on the sender’s shard for write efficiency.
+      Group ID as a sharding key allows single-shard queries for group operations .
+
+
+
+
+
