@@ -362,11 +362,11 @@ However, let’s say due to some internal problem, money did not get deposited i
 
 
 
-* Choosing the right sharding key :
-   KEY which is used to decide on how to distribute the data across multiple DB machines.
-   It will also be used to route the queries to right DB machine while fetching the data.
+* Choosing the right sharding key :  
+   KEY which is used to decide on how to distribute the data across multiple DB machines.  
+   It will also be used to route the queries to right DB machine while fetching the data.  
 
-* Properties of a good sharding key :
+* Properties of a good sharding key :  
   
    - Equal Data Load Distribution: Ensures data is evenly distributed across shards, prevents hotspots .
    - High Cardinality: High number of unique values ensure even distribution .
@@ -381,19 +381,19 @@ However, let’s say due to some internal problem, money did not get deposited i
 
 Use Cases and Examples:
 
-* IRCTC Use Case:
-   Problem: Prevent double booking during peak TATKAAL booking.
-   Sharding Key: Proposed use of train ID instead of user ID or ticket ID to organize data efficiently during high traffic .
+* IRCTC Use Case:  
+   Problem: Prevent double booking during peak TATKAAL booking.  
+   Sharding Key: Proposed use of train ID instead of user ID or ticket ID to organize data efficiently during high traffic .  
 
-* Banking System:
-   Problem: Handle high-frequency queries like balance checks, transaction history.
-   Sharding Key: Suggests using types of accounts as attributes for sharding, ensuring even distribution and quick access .
+* Banking System:  
+   Problem: Handle high-frequency queries like balance checks, transaction history.  
+   Sharding Key: Suggests using types of accounts as attributes for sharding, ensuring even distribution and quick access .  
 
-* Messaging System:
-   Problem: Efficiently handle one-to-one and group messages.
-   Solution Scenarios:
-      Store messages on the sender’s shard for write efficiency.
-      Group ID as a sharding key allows single-shard queries for group operations .
+* Messaging System:  
+   Problem: Efficiently handle one-to-one and group messages.  
+   Solution Scenarios:  
+      Store messages on the sender’s shard for write efficiency.  
+      Group ID as a sharding key allows single-shard queries for group operations .  
 
 
 
