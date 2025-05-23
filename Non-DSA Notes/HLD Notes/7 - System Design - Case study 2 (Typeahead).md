@@ -340,3 +340,86 @@ card_type: cue_card
     * Hence, the same trend is exhibited by a random sample of search queries. Using this approach, the number of writes gets reduced.
     * Basically, if you choose to sample 1% of the queries, the number of writes got reduced by 100x.
 * Time Decay factor reduces the weightage of search queries performed in the past in an exponential fashion.
+
+
+
+
+
+
+
+
+
+
+
+
+*************
+*************
+*************
+
+
+
+Designing a Typeahead System  
+   1) Minimum Viable Product (MVP)     
+         This entails identifying critical features necessary for the system to operate effectively.  
+         Example features for a typeahead system could include capturing user inputs, providing real-time suggestions, and being able to             learn from new search terms  
+
+   2) Scale Estimation  
+         Scale estimation involves guesstimating the load on the system by evaluating how many queries need to be processed and stored.  
+         Google handles about 10 billion write operations and significantly more read operations (typeahead queries) every day  
+
+   3) Design Trade-offs  
+         Important trade-offs exist between consistency, availability, and latency. Typeahead systems typically prioritize availability and 
+         low latency to ensure a seamless user experience.  
+
+   4) Data Storage and Sharding  
+         For large-scale systems like Google, data sharding is essential to manage the vast amounts of data efficiently. Given the                   potential data size of 146TB over 10 years, sharding across different data nodes is necessary.  
+
+
+***
+***
+
+
+Technical Infrastructure and APIs
+
+   * APIs Design:  
+     getSuggestion(prefix_term, limit = 5): Fetches suggestions for a given prefix. The limit parameter denotes the number of suggestions.  
+     updateFrequency(search_term): Updates the frequency of searched terms. This helps in maintaining the relevance of recent queries.  
+
+   * Data Structures:  
+      Trie: A prefix-based data structure which is conducive to efficiently storing and retrieving search terms
+      Nodes in a trie represent the search path, where each node stores frequency data and suggestions.
+
+   * Recency and Relevance:
+      Implementing a mechanism to manage the recency factor is critical. The frequency of search terms is decayed over time to ensure             current trends are prioritized over stale data, referred to as time decay.
+
+
+
+****
+****
+
+
+
+Considerations for Implementation
+   
+   * Latency Optimization:  
+      Utilize multiple levels of caching including client-side, server-side, and global caches to minimize latency.  
+      Trade-offs between stateful and stateless architectures are considered here based on latency requirements.  
+
+   * Read vs. Write Heavy Systems:  
+      Understanding whether the system is read-heavy or write-heavy helps in optimizing the architecture. Typeahead is inherently read-           heavy, with a 1:6 write-to-read ratio.  
+     
+   * Handling Disproportionate Load:  
+      To manage uneven traffic across shards, a balanced load is maintained by grouping prefixes to balance the traffic load.
+
+
+
+
+****
+
+
+
+[Typeahead - 1] - (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F258%2F977%2Foriginal%2FTypeahead___21st_March.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250522%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250522T125904Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D74d9ac12b0968e569997d7a877c26e455c1e5d7a643c7c28563e4440a12952fa&resourceId=1a2eb711-6418-42ee-b356-a6955d7b1fd1&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
+
+
+
+[Typeahead - 2] - (https://airlock-on-edge.woolf.university/?url=https%3A%2F%2Fscaler-production-new.s3.ap-southeast-1.amazonaws.com%2Fattachments%2Fattachments%2F000%2F260%2F090%2Foriginal%2FTypeahead___24th_March.pdf%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIDNNIRGHAQUQRWYA%252F20250523%252Fap-southeast-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20250523T111017Z%26X-Amz-Expires%3D561600%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D149abe3316f72a3a8a177638a00c6feca4c6cf692e7d74d4145e3c686fdde010&resourceId=5255635a-c5f1-41f5-9bac-981de8a6088d&studentId=b3ffae78-376c-40f6-a686-a1eb6560b82d&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImIzZmZhZTc4LTM3NmMtNDBmNi1hNjg2LWExZWI2NTYwYjgyZCIsImlzcyI6InVybjpXb29sZlVuaXZlcnNpdHk6c2VydmVyL3NlcnZpY2UvYWNjZXNzIiwiaXNWZXJpZmllZCI6dHJ1ZSwia2luZCI6Im9hdXRoIiwib3JnIjp7Imdyb3VwcyI6W10sImlkIjoiOWIxN2Y1Y2UtMTA3OC00ZmRmLWFlYzAtMDJiZjRlY2ZiMGE2In0sInNjb3BlIjoiKiJ9.-RiUerqfMZz_f13n9wInEAS9DOgfb35uxZabX25SqBs)
