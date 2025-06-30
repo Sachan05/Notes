@@ -13,7 +13,7 @@ Agenda
     - LIMIT Clause
   - Update
   - Delete
-    - Delete vs Truncate vs Drop
+    - <mark>Delete vs Truncate vs Drop</mark>
     - Truncate
     - Drop
 
