@@ -129,20 +129,22 @@ Primary Key
 ### Primary Key
 
 We just learnt about super keys and candidate keys. Can 1 table have mulitiple candidate keys? Yes. The Student's table earlier had both `email`, `phone number` as candidate keys. A key in MySQL plays a very important role. Example, MySQL orders the data in disk by the key. Similarly, by default, it returns answers to queries ordered by key. Thus, it is important that there is only 1 key. And that is called primary key. A primary key is a candidate key that is chosen to be the key for the table. In the students table, we can choose `email` or `phone number` as the primary key. Let's choose `email` as the primary key.
-
+<mark>
 > Note: Internally,
 > 1. Database sorts the data by primary key.
 > 2. Database outputs the result of every query sorted by primary key.
 > 3. Database creates an index as well on primary key.
+</mark>
 
+Sometimes, we may have to or want to create a new column to be the primary key. Eg: If we have a students table with columns (name, email, phone number), we may have to create a new column called roll number or studentId to be the primary key. This may be because, let's say, a user can change their email or phone number if they want. Something that is used to uniquely identify a row should ideally never change. Hence, we create a new column called roll number or studentId to be the primary key.  
 
-Sometimes, we may have to or want to create a new column to be the primary key. Eg: If we have a students table with columns (name, email, phone number), we may have to create a new column called roll number or studentId to be the primary key. This may be because, let's say, a user can change their email or phone number if they want. Something that is used to uniquely identify a row should ideally never change. Hence, we create a new column called roll number or studentId to be the primary key.
-
+<mark>
 > A good primary key should:
 > 1. be fast to sort on.
 > 2. have smaller size (to reduce the space required for behind the scene indexing).
 > 3. not get changed.
-
+</mark>  
+  
 Therefore, it is preferred to have a primary key with single integer column.
 
 
@@ -268,7 +270,7 @@ Now let's get to the last topic of the day. Which is foreign keys. Let's say we 
 | 5          | Jack       | Johnson   | 
 
 
-Correct, We can add batchId column in students table. But how do we know which batch a student belongs to? How do we ensure that the batchId we are storing in the students table is a valid batchId? What if someone puts the value in batchID column as 4 but there is no batch with id 4 in batches table. We can set such kind of constraints using foreign keys. **A foreign key is a column in a table that references a column in another table.** It has nothing to do with primary, candidate, super keys. It can be any column in 1 table that refers to any column in other table. In our case, batchId is a foreign key in the students table that references the id column in the batches table. This ensures that the batchId we are storing in the students table is a valid batchId. If we try to insert any value in the batchID column of students table that isn't present in id column of batches table, it will fail. Another example:
+Correct, We can add batchId column in students table. But how do we know which batch a student belongs to? How do we ensure that the batchId we are storing in the students table is a valid batchId? What if someone puts the value in batchID column as 4 but there is no batch with id 4 in batches table. We can set such kind of constraints using foreign keys.<mark> **A foreign key is a column in a table that references a column in another table.** It has nothing to do with primary, candidate, super keys. It can be any column in 1 table that refers to any column in other table.</mark> In our case, batchId is a foreign key in the students table that references the id column in the batches table. This ensures that the batchId we are storing in the students table is a valid batchId. If we try to insert any value in the batchID column of students table that isn't present in id column of batches table, it will fail. Another example:
 
 Let's say we have `years` table as:
 `| id | year | number_of_days |`
@@ -303,10 +305,11 @@ Correct, let's say we have students and batches tables as follows:
 | 4          | Jenny      | Smith     | 3        |
 | 5          | Jack       | Johnson   | 2        |
 
-Now let's say we delete the row with batch_id 2 from batches table. What will happen? Yes, the students Jim and Jack will be orphaned. They will be in the students table but there will be no batch with id 2. This is called orphaning. This is one of the problems with foreign keys. Another problem is that if we update the batch_id of a batch in batches table, it will not be updated in students table. Eg: If we update the batch_id of Batch A from 1 to 4, the students John and Jane will still have batch_id as 1. This is called inconsistency.
+Now let's say we delete the row with batch_id 2 from batches table. What will happen? Yes, the students Jim and Jack will be orphaned. They will be in the students table but there will be no batch with id 2. This is called **orphaning**. This is one of the problems with foreign keys. Another problem is that if we update the batch_id of a batch in batches table, it will not be updated in students table. Eg: If we update the batch_id of Batch A from 1 to 4, the students John and Jane will still have batch_id as 1. This is called inconsistency.  
 
-To fix for these, MySQL allows you to set ON DELETE and ON UPDATE constraints when creating a foreign key. You can specify what should happen in case an update or a delete happens in the other table. What do you think are different possibilities of what we can do if a delete happens?
-
+<mark>
+To fix for these, MySQL allows you to set **ON DELETE and ON UPDATE** constraints when creating a foreign key. You can specify what should happen in case an update or a delete happens in the other table. What do you think are different possibilities of what we can do if a delete happens?
+</mark>  
 
 
 You can set 4 values for ON DELETE and ON UPDATE. They are:
