@@ -48,9 +48,11 @@ To execute above, you will have to go through literally each row on the disk, an
 
 To understand this better, let's take an example of a book. Imagine a big book covering a lot of topics. Now, if you want to find a particular topic in the book, what will you do? Will you start reading the book from the first page? No, right? You will go to the index of the book, find the page number of the topic you want to read, and then go to that page. This is exactly what indexing is. As index of a book helps go to the correct page of the book fast, the index of a database helps go to the correct block of the disk fast.
 
-Now this is a very important line. Many people say that an index sorts a table. Nope. It has nothing to do with sorting. We will go over this a bit later in today's class. The major problem statement that indexes solve is to reduce the number of disk block accesses to be done. By preventing wastefull disk block accesses, indexes are able to increase performance of queries.
+<mark>
+Now this is a very important line. Many people say that an index sorts a table. Nope. It has nothing to do with sorting. We will go over this a bit later in today's class. The major problem statement that **indexes solve is to reduce the number of disk block accesses to be done.** By preventing wastefull disk block accesses, indexes are able to increase performance of queries. 
+</mark>
 
-How is performance related with Inexing:
+How is performance related with Indexing:
 
 `Performance of SQL queries with powerful hardware and good optimizations but without indexing:`
 ![Performance_without_Indexing](https://hackmd.io/_uploads/SktMttvsa.png)
@@ -400,3 +402,21 @@ The characteristics of the non-clustered index are as follows:
 
 
 That's all for today. Thanks!
+
+
+*****
+
+
+<mark>
+Indexing : Indexing creates a lookup table with the column(on which we are indexing) and the pointer to the memory location of the row containing this column. 
+
+* if the rows increases from lets say 100-1M, how will we optimise it ? 
+    - using indexing, earlier it was taking O(N), now it will take O(log N) after indexing.
+* how indexing helps ?
+    - Indexing creates a spearate memory location where that column is stored in sorted manner and it stores the refernece         of that row in original table
+* which data structure is stored for that separate memory location ?
+    - B-Trees are used to sotre the indexing as it is a multi level format of tree based indexing, which has balanced BST.
+ 
+***  we should use Indexing only in read intensive DB, for write intensive DB it doesnt help because whenever there is write or update operation it will update in the original table as well as it has to update this new indexed lookup table and sort the data again. hence, its not optimised. ***
+
+</mark>
