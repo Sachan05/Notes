@@ -408,7 +408,7 @@ That's all for today. Thanks!
 
 
 <mark>
-Indexing : Indexing creates a lookup table with the column(on which we are indexing) and the pointer to the memory location of the row containing this column. 
+Indexing : Indexing creates a lookup table in the new memory location with the column(on which we are indexing) and the pointer to the memory location of the row containing this column. 
 
 * if the rows increases from lets say 100-1M, how will we optimise it ? 
     - using indexing, earlier it was taking O(N), now it will take O(log N) after indexing.
@@ -417,6 +417,5 @@ Indexing : Indexing creates a lookup table with the column(on which we are index
 * which data structure is stored for that separate memory location ?
     - B-Trees are used to sotre the indexing as it is a multi level format of tree based indexing, which has balanced BST.
  
-***  we should use Indexing only in read intensive DB, for write intensive DB it doesnt help because whenever there is write or update operation it will update in the original table as well as it has to update this new indexed lookup table and sort the data again. hence, its not optimised. ***
-
+**we should use Indexing only in read intensive DB, for write intensive DB it doesnt help because whenever there is write or update operation it will update in the original table as well as it has to update this new indexed lookup table and sort the data again. hence, its not optimised.**
 </mark>
