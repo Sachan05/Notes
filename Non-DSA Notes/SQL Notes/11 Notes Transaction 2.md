@@ -345,9 +345,9 @@ By Using concept of Serializable
 ---
 Serializable
 ---
-
-This technique ensures that multiple transactions or processes are executed in a specific order, one after the other, even if they are requested simultaneously. 
-
+<mark>
+**This technique ensures that multiple transactions or processes are executed in a specific order, one after the other, even if they are requested simultaneously.** 
+</mark>
 
 > Activity: Let's understand the difference between the types of isolation with the **"Show Tickets" and "Book Tickets"** functionalities on the BookMyShow website by showing a similar booking in two different tabs.
 Show Ticket: In the "Show Tickets" functionality, both users can select the same seat.
@@ -377,8 +377,9 @@ SELECT * FROM film WHERE film_id in(13,14) FOR UPDATE;
 > Note: The above query will keep loading, as lock is already taken on row 13 so even read is not allowed now
 > If FOR UPDATE wasn't used in session-1, then it should be allowed to read in session-2
 
-Thus, serialization makes the concept of one person at a time, avoiding concurrency and maintaining consistency with complete isolation.
-
+<mark>
+**Thus, serialization makes the concept of one person at a time, avoiding concurrency and maintaining consistency with complete isolation.**
+</mark>
 
 
 ---
@@ -398,11 +399,18 @@ But this lock can lead to deadlock condition. This problem happens when two peop
 4. Both are waiting for each other to release their occupied lock.
 5. T1 is waiting for T2 to complete and T2 is waiting for T1 to complete and no one is making progress. This condition is know as deadlock.
 
-
+<mark>
 **How we handle Deadlock in SQL:** It automatically rollsback one of the transaction.
 
-**Way to avoid Deadlock:** take locks in defined ordered way
+**Way to avoid Deadlock:** take locks in defined ordered way.
+</mark>
 
+*****
+
+
+* Dirty Read
+* Non-Repetable read
+* Phantom read
 
 
 > **More on deadlocks:** [We'll discuss more about deadlock in further classes of next module.](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-deadlocks-guide?view=sql-server-ver16)
