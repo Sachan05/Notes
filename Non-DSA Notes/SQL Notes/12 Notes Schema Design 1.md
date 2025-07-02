@@ -256,9 +256,13 @@ How to represent different cardinalities
 
 When we have a 1:1 cardinality, the `id` column of any one relation can be used as an attribute in another relation. It is not suggested to include the both the respective `id` column of the two relations in each other because it may cause update anomaly in future transactions.
 
+<mark>
 For 1:m and m:1 cardinalities, the `id` column of `1` side relation is included as an attribute in `m` side relation.
+</mark>
 
+<mark>
 For m:m cardinalities, create a new table called a **mapping table** or **lookup table** which stores the ids of both tables according to their associations.
+</mark>
 
 For example, for tables `orders` and `products` in previous quiz have m:m cardinality. So, we will create a new table `orders_products` to accomodate the relation between order ids and products ids.
 
