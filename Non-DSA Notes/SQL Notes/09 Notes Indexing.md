@@ -416,6 +416,13 @@ Indexing : Indexing creates a lookup table in the new memory location with the c
     - Indexing creates a spearate memory location where that column is stored in sorted manner and it stores the refernece         of that row in original table
 * which data structure is stored for that separate memory location ?
     - B-Trees are used to sotre the indexing as it is a multi level format of tree based indexing, which has balanced BST.
+
+<mark>
+There are 2 types of indexes : 
+1) Clustered Index - in this, table data is stored in the same order as index.
+2) Non-clustered index - its a separate strucutre from the table that contains a sorted list of pointers to the actual table rows.
+</mark>
+
  
 **we should use Indexing only in read intensive DB, for write intensive DB it doesnt help because whenever there is write or update operation it will update in the original table as well as it has to update this new indexed lookup table and sort the data again. hence, its not optimised.**
 </mark>
