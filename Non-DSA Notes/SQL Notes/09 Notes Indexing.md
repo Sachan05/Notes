@@ -406,23 +406,69 @@ That's all for today. Thanks!
 
 *****
 
+**Indexing :** 
+Indexing is a data structure technique that improves the speed of data retrieval operations on a database table, at the cost of additional space and slower writes (INSERT/UPDATE/DELETE).
+Think of it like an index in a book — instead of scanning every page, you can jump directly to the relevant section.
+Indexing creates a lookup table in the new memory location with the column(on which we are indexing) and the pointer to the memory location of the row containing this column. 
 
-<mark>
-Indexing : Indexing creates a lookup table in the new memory location with the column(on which we are indexing) and the pointer to the memory location of the row containing this column. 
+* **Benefits of Indexing :**
+  - **Faster Query Performance :**
+    - Reduces disk I/O by avoiding full scans.
+    - Helps with WHERE, JOIN, ORDER BY, and GROUP BY clauses.
+  - **Faster Sorting :** Since the index maintains an ordered structure, sorting is faster.
+  - **Supports Constraints :** Unique indexes help enforce UNIQUE or PRIMARY KEY constraints.
 
-* if the rows increases from lets say 100-1M, how will we optimise it ? 
-    - using indexing, earlier it was taking O(N), now it will take O(log N) after indexing.
-* how indexing helps ?
-    - Indexing creates a spearate memory location where that column is stored in sorted manner and it stores the refernece         of that row in original table
-* which data structure is stored for that separate memory location ?
-    - B-Trees are used to sotre the indexing as it is a multi level format of tree based indexing, which has balanced BST.
-
-<mark>
-There are 2 types of indexes : 
-1) Clustered Index - in this, table data is stored in the same order as index.
-2) Non-clustered index - its a separate strucutre from the table that contains a sorted list of pointers to the actual table rows.
-</mark>
-
+* **Costs / Tradeoffs :**
+  - **Extra Storage** — Indexes consume disk space.
+  - **Slower Writes** — Every INSERT, UPDATE, or DELETE must also update the index.
+  - **Maintenance Overhead** — Too many or poorly designed indexes slow the system.
  
+* **Types of Indexes :**
+  - Primary Index : Created on primary key. Automatically created. Uniquely identifies rows.
+  - Secondary Index : Created manually. Speeds up lookups on non-primary columns
+  - Composite Index : (col1, col2). For queries filtering multiple columns.
+  - 1) Clustered Index - in this, table data is stored in the same order as index.
+    2) Non-clustered index - its a separate strucutre from the table that contains a sorted list of pointers to the actual table rows.
+
+----------------------------
+* **Working :**
+
+* **STEP 1 :**
+  - When you create an index, the database builds a separate data structure (usually a B-tree) that stores key-value pairs.
+  - The key is the indexed column (email) and the value is a pointer to where the full record lives in the main table (for example, a physical disk address or row ID).
+  - The index is sorted by email, so the DB can do binary search–style lookups (O(log N)) instead of scanning every row (O(N)).
+    
+
+| email (key)                                   | pointer to row (value) |
+| --------------------------------------------- | ---------------------- |
+| [alice@email.com](mailto:alice@email.com)     | → row #1               |
+| [bob@email.com](mailto:bob@email.com)         | → row #2               |
+| [charlie@email.com](mailto:charlie@email.com) | → row #3               |
+| [diana@email.com](mailto:diana@email.com)     | → row #4               |
+
+
+* **Step 2: How the DB Uses the Index on Query :**
+  - When you run : SELECT * FROM users WHERE email = 'bob@email.com';
+  - The database query planner checks:
+    - Is there an index on email?
+    - If yes, it uses the index tree instead of the main table to find the row.
+    - **Internally, the process looks like this:**
+      - Traverse the B-tree index:
+      - Compare 'bob@email.com' to node keys → follow left/right pointers until the leaf node containing the value is found.
+      - Retrieve the row pointer from that leaf node.
+      - Jump directly to the physical record in the main table and return it.
+      - This avoids reading unrelated rows — it’s like jumping straight to the right page in a phone book instead of flipping every page.
+
+* In most relational DBs:
+  - **Clustered index (like a primary key):** the data itself is stored in the B-tree (the table is the index).
+  - **Non-clustered index (like our email example):** stores the key + pointer to the actual row in the base table.
+
+* **Summary :**
+  - The index is a sorted, searchable structure (B-tree).
+  - It stores a mapping from key → row location.
+  - Lookup becomes **O(log N)** instead of **O(N).**
+  - The DB follows the pointer from index → table row.
+    
+  
 **we should use Indexing only in read intensive DB, for write intensive DB it doesnt help because whenever there is write or update operation it will update in the original table as well as it has to update this new indexed lookup table and sort the data again. hence, its not optimised.**
-</mark>
+--------------------
