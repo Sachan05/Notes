@@ -2,10 +2,10 @@
    - **[Leetcode : interview-top-150](https://leetcode.com/studyplan/top-interview-150)**
    - 
      - [Leetcode : list of questions sorted by common patterns](https://leetcode.com/discuss/post/448285/list-of-questions-sorted-by-common-patte-936d)
-     - https://leetcode.com/explore/interview/card/top-interview-questions-easy/
-     - https://leetcode.com/problemset/
-       - **DSA Sheet :** https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0
-       - **SDE sheet GFG (DSA):**  https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/
+     - [leetcode : top interview questions - Levels](https://leetcode.com/explore/interview/card/top-interview-questions-easy)
+     - [Leetcode : Problemset](https://leetcode.com/problemset)
+     - **[DSA Sheet ](https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)**
+     - **[SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
 
 
 3) System Design :
