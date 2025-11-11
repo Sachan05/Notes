@@ -9,45 +9,41 @@
 
 
 **2) System Design :**
-   - **Scaler Notes, Case studies**
+   - **Scaler : Notes, Case studies**
    - 
-     - HLD :
+     - **HLD :**
        - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=SqcXvc3ZmRU&list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX)
        - [Tech Granth Playlist](https://www.youtube.com/watch?v=ThjBc80X_hU&list=PLJN9ydlFnJsiEH_U9guHTNs6H2tH00h9S)
       
-      - LLD :
+      - **LLD :**
         - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
         - [Design Patterns in Python - Refactoring Guru](https://refactoring.guru/design-patterns/python)
 
       - [System Design GFG](https://www.geeksforgeeks.org/system-design/system-design-tutorial)
 
 
-     
+          
 
-   
-
-
-
-
-
-     
-     
-
-4) Google ML Course :
-      *  https://developers.google.com/machine-learning/crash-course#course-modules
-      *  https://www.deeplearning.ai/courses/
-      *  Data Science Udemy : -  https://www.udemy.com/course/the-data-science-course-complete-data-science- bootcamp/?couponCode=LETSLEARNNOW
-      *  NLP tutorial : https://www.youtube.com/watch?v=R-AG4-qZs1A&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX
+**3) Projects - ML :**
+   - **[Google ML Crash Course](https://developers.google.com/machine-learning/crash-course#course-modules)**
+   - **Project Interview Questions - Chatgpt**
+   - 
+     - [DeepLearning.ai Specialization Courses](https://www.deeplearning.ai/courses/)
+     - [NLP tutorial - Youtube](https://www.youtube.com/watch?v=R-AG4-qZs1A&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX)
 
 
-5) Scaler : 
-      * DSA Revision Quiz : - https://hackmd.io/BYspa67HTG2yvc1b6R7UeA?view
-      * DSA Revision Resources : - https://docs.google.com/document/d/19mWysmys4DdFfUtd97tCfiTziQuuubAxvSVRqvC2F5s/edit?tab=t.0#heading=h.jiajinych0wd
-      * Scaler Notes : - https://github.com/KingsGambitLab/Lecture_Notes
+4) AWS :
+   - [Scaler - Youtube](https://www.youtube.com/watch?v=B8i49C8fC3E)
+   - Chatgpt
 
 
-6) AWS :  
-      * Scaler :-  https://www.youtube.com/watch?v=B8i49C8fC3E
+5) Scaler :
+   - [DSA Revision Quiz](https://hackmd.io/BYspa67HTG2yvc1b6R7UeA?view)
+   - [DSA Revision Resources](https://docs.google.com/document/d/19mWysmys4DdFfUtd97tCfiTziQuuubAxvSVRqvC2F5s/edit?tab=t.0#heading=h.jiajinych0wd)
+   - [Scaler Notes](https://github.com/KingsGambitLab/Lecture_Notes)
+
+
+
 
 
 
