@@ -8,15 +8,24 @@
      - **[SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
 
 
-3) System Design :
-     - System Design GFG :  https://www.geeksforgeeks.org/system-design/system-design-tutorial/
-     - LLD : 
-                -  https://refactoring.guru/design-patterns/python
-                -  gaurav sen : https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7
-     - HLD : 
-                - gaurav sen : https://www.youtube.com/watch?v=SqcXvc3ZmRU&list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX
-                - tech granth : https://www.youtube.com/watch?v=ThjBc80X_hU&list=PLJN9ydlFnJsiEH_U9guHTNs6H2tH00h9S
+**2) System Design :**
+   - **Scaler Notes, Case studies**
+   - 
+   - **HLD :**
+     - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=SqcXvc3ZmRU&list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX)
+     - [Tech Granth Playlist](https://www.youtube.com/watch?v=ThjBc80X_hU&list=PLJN9ydlFnJsiEH_U9guHTNs6H2tH00h9S)
 
+   - **LLD :**
+     - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
+     - [Design Patterns in Python - Refactoring Guru](https://refactoring.guru/design-patterns/python)
+       
+   - System Design GFG :  https://www.geeksforgeeks.org/system-design/system-design-tutorial/
+
+
+
+
+     
+     
 
 4) Google ML Course :
       *  https://developers.google.com/machine-learning/crash-course#course-modules
