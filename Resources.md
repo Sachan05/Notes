@@ -21,7 +21,8 @@
         - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
         - [Design Patterns in Python - Refactoring Guru](https://refactoring.guru/design-patterns/python)
        
-      - **[Other Topics : SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
+      - **Other Topics :**
+        - **[SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
 
       
 
