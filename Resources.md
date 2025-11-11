@@ -5,12 +5,13 @@
      - [leetcode : top interview questions - Levels](https://leetcode.com/explore/interview/card/top-interview-questions-easy)
      - [Leetcode : Problemset](https://leetcode.com/problemset)
      - **[DSA Sheet ](https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)**
-     - **[SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
+     
 
 --------------------
 
 **2) System Design :**
-   - **Scaler : Notes, Case studies**
+   - **NOTES - Scaler, GFG, Case Studies, chatgpt, interview questions**
+   - [System Design GFG](https://www.geeksforgeeks.org/system-design/system-design-tutorial)
    - 
      - **HLD :**
        - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=SqcXvc3ZmRU&list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX)
@@ -19,8 +20,10 @@
       - **LLD :**
         - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
         - [Design Patterns in Python - Refactoring Guru](https://refactoring.guru/design-patterns/python)
+       
+      - **[Other Topics : SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
 
-      - [System Design GFG](https://www.geeksforgeeks.org/system-design/system-design-tutorial)
+      
 
 -----------------------
           
