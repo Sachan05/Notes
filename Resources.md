@@ -7,6 +7,7 @@
      - **[DSA Sheet ](https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)**
      - **[SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
 
+--------------------
 
 **2) System Design :**
    - **Scaler : Notes, Case studies**
@@ -21,7 +22,7 @@
 
       - [System Design GFG](https://www.geeksforgeeks.org/system-design/system-design-tutorial)
 
-
+-----------------------
           
 
 **3) Projects - ML :**
@@ -31,6 +32,9 @@
      - [DeepLearning.ai Specialization Courses](https://www.deeplearning.ai/courses/)
      - [NLP tutorial - Youtube](https://www.youtube.com/watch?v=R-AG4-qZs1A&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX)
 
+------------------------------
+------------------------------
+------------------------------
 
 4) AWS :
    - [Scaler - Youtube](https://www.youtube.com/watch?v=B8i49C8fC3E)
