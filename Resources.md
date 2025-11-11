@@ -22,7 +22,7 @@
         - [Design Patterns in Python - Refactoring Guru](https://refactoring.guru/design-patterns/python)
        
       - **Other Topics :**
-        - **[SDE sheet GFG (DSA)](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
+        - **[SDE sheet GFG : DSA, OS, DBMS, SQL, Networks](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
 
       
 
