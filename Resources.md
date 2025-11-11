@@ -1,21 +1,13 @@
+**1) Leetcode :**
+   - **[Leetcode-top-interview-150]**(https://leetcode.com/studyplan/top-interview-150/)
+     - https://leetcode.com/discuss/post/448285/list-of-questions-sorted-by-common-patte-936d/
+     - https://leetcode.com/explore/interview/card/top-interview-questions-easy/
+     - https://leetcode.com/problemset/
+       - DSA Sheet : https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0
+       - SDE sheet GFG (DSA):  https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/
 
 
-
-
-
-
-
-1) Leetcode :
-      *  [](https://leetcode.com/problemset/)
-      *  https://leetcode.com/explore/interview/card/top-interview-questions-easy/
-      *  [Leetcode-interview-150](https://leetcode.com/studyplan/top-interview-150/)
-      *  https://leetcode.com/discuss/post/448285/list-of-questions-sorted-by-common-patte-936d/
-
-      *  DSA Sheet : https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0
-      *  SDE sheet GFG (DSA):  https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/
-
-
-2) System Design :
+3) System Design :
      - System Design GFG :  https://www.geeksforgeeks.org/system-design/system-design-tutorial/
      - LLD : 
                 -  https://refactoring.guru/design-patterns/python
@@ -25,20 +17,20 @@
                 - tech granth : https://www.youtube.com/watch?v=ThjBc80X_hU&list=PLJN9ydlFnJsiEH_U9guHTNs6H2tH00h9S
 
 
-3) Google ML Course :
+4) Google ML Course :
       *  https://developers.google.com/machine-learning/crash-course#course-modules
       *  https://www.deeplearning.ai/courses/
       *  Data Science Udemy : -  https://www.udemy.com/course/the-data-science-course-complete-data-science- bootcamp/?couponCode=LETSLEARNNOW
       *  NLP tutorial : https://www.youtube.com/watch?v=R-AG4-qZs1A&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX
 
 
-4) Scaler : 
+5) Scaler : 
       * DSA Revision Quiz : - https://hackmd.io/BYspa67HTG2yvc1b6R7UeA?view
       * DSA Revision Resources : - https://docs.google.com/document/d/19mWysmys4DdFfUtd97tCfiTziQuuubAxvSVRqvC2F5s/edit?tab=t.0#heading=h.jiajinych0wd
       * Scaler Notes : - https://github.com/KingsGambitLab/Lecture_Notes
 
 
-5) AWS :  
+6) AWS :  
       * Scaler :-  https://www.youtube.com/watch?v=B8i49C8fC3E
 
 
