@@ -1,5 +1,5 @@
 **1) DSA :**
-   - [ Leetcode-top-interview-150 ] (https://leetcode.com/studyplan/top-interview-150/)
+   - [Leetcode-top-interview-150](https://leetcode.com/studyplan/top-interview-150)
      
      - https://leetcode.com/discuss/post/448285/list-of-questions-sorted-by-common-patte-936d/
      - https://leetcode.com/explore/interview/card/top-interview-questions-easy/
