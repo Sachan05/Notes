@@ -33,12 +33,13 @@
      - [NLP tutorial - Youtube](https://www.youtube.com/watch?v=R-AG4-qZs1A&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX)
 
 ------------------------------
-------------------------------
-------------------------------
+
 
 4) AWS :
    - [Scaler - Youtube](https://www.youtube.com/watch?v=B8i49C8fC3E)
    - Chatgpt
+
+------------------------------
 
 
 5) Scaler :
@@ -47,6 +48,11 @@
    - [Scaler Notes](https://github.com/KingsGambitLab/Lecture_Notes)
 
 
+------------------------------
+------------------------------
+------------------------------
+------------------------------
+------------------------------
 
 
 
