@@ -42,8 +42,9 @@ Now, imagine these operations are done separately in an app server. Let’s assu
 
 Now, if the second operation is performed, it would set Rohit’s bank balance to -500 which does not make sense. Hence, if the database does not guarantee atomicity and isolation, these kinds of problems can happen when multiple requests attempt to access (and modify) the same node.
 
+<mark>
 Now, when Rohit makes a request to withdraw 1000 INR from his account, both these operations represent a single transaction. The transaction either succeeds completely or fails. There won’t be any race conditions between two transactions. This is guaranteed by a SQL database.
-
+</mark>
 ---
 title: Defined Schema in SQL Database
 description: Defined Schema in SQL Database.
