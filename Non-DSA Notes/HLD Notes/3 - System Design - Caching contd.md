@@ -69,7 +69,9 @@ card_type: cue_card
 ---
 
 ### File Metadata
+<mark> 
 The best approach would be we identify whether the file has changed or not using the metadata for the files.
+</mark>
 
 Let's assume in the MySQL database, there exists table problems_test_data. It contains details problem_id, input_filepath, input_file_updated_at, input_file_created_at for input files, and similar details for the output files as well. If a file is updated on the file storage, its metadata will also be updated in the SQL database.
 
@@ -80,10 +82,12 @@ Now all the files can be cached in the app server with a better approach to cons
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/685/original/upload_bccfae71f1b19edaa20eca8d63facd7b.png?1695236928)
 
+<mark>
 When a submission comes for a problem, we can go to the database (MySQL dB) and get the file path and its last updated time. If a file with problem_id_updated_at_input.txt exists in a machine cache, it is guaranteed that the existing file is the correct one. If the file doesn't exist, then the path can be used to fetch it from the file storage (along with now storing it locally on the machine for the future). 
-
+</mark>
+<mark> 
 Similar things can be done for the output files as well. Here the metadata about the file is used to check whether the file has been changed/updated or not, and this gives us a very clean cache invalidation. 
-
+</mark>
 **Updating a file,**
 All cache servers have some files stored if an update is to be done for a file stored in S3. The process looks like this:
 
@@ -95,11 +99,13 @@ For a problem (say for problem_id 200) if an update request comes to modify an i
 ```java
 UPDATE problem_test data WHERE problem_id = 200 SET inputfile_path = new_path AND inputfile_updated_at = NOW()
 ```
+<mark>
 * Now, if submission comes and the metadata in DB does not match that of the file existing in the cache, the new file needs to be fetched from the file storage at the location new_path. The returned file will be stored in the HDD of the app server. For the next requests, it will be present on the hard disk already (if not evicted).
+</mark>
 
 It can be noted that every time a submission is made, we have to go to the MySQL DB to fetch all the related information of the problem/user. The information like whether it's already solved, problem score, and user score. It's a better option to fetch the file's metadata simultaneously while we fetch other details. If solutions pass, the related details have to be updated on DB again.
 
-A separate cache for all machines is better than one single-layer cache. Here(https://gist.github.com/jboner/2841832) is why.
+**A separate cache for all machines is better than one single-layer cache. Here(https://gist.github.com/jboner/2841832) is why.**
 
 ---
 title: Case of rank list in a contest with immense traffic
@@ -113,7 +119,8 @@ Ranklist Discussion: Let's take an example of the rank list in a contest with im
 
 <mark>
 The solution can be computing the rank list periodically and caching it somewhere for a particular period. Copy of static rank list gets generated after a fixed time (say one minute) and cached. It reduces the load on DB significantly.  
-
+</mark>
+<mark>
 Storing the rank list in the local server will be less effective since there will be many servers, and every minute cache miss may occur for every server. A much better approach is to store the rank list in the global cache shared by all app servers. Therefore there will be only one cache miss every minute. **Here global caching performs better than local caching.** Redis can be used for the purpose.
 </mark>
 
