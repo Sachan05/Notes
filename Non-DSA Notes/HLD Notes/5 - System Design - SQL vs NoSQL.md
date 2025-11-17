@@ -44,7 +44,8 @@ Now, if the second operation is performed, it would set Rohit’s bank balance t
 
 <mark>
 Now, when Rohit makes a request to withdraw 1000 INR from his account, both these operations represent a single transaction. The transaction either succeeds completely or fails. There won’t be any race conditions between two transactions. This is guaranteed by a SQL database.
-</mark>
+</mark>  
+
 ---
 title: Defined Schema in SQL Database
 description: Defined Schema in SQL Database.
