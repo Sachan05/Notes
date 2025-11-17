@@ -279,6 +279,7 @@ Therefore all the recent posts can be stored in a separate database and retrievi
 1. Fetch the friend_ids of the user.
 2. Select recent posts made by the user’s friend: SELECT * FROM all_posts  WHERE user_id IN friend_ids LIMIT x OFFSET y
 
+<mark>
 This approach uses much lesser storage and approach than the previous system. Here the cache is stored in a hard disk, not in RAM, but still, this is much faster than getting data from an actual storage system.
-
+</mark>
 We can also delete the older posts from HDD: DELETE * FROM all_posts WHERE timestamp < NOW - 30 days. This will help in better storage management.
