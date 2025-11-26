@@ -72,8 +72,9 @@ card_type: cue_card
 <mark> 
 The best approach would be we identify whether the file has changed or not using the metadata for the files.
 </mark>
-
+<mark> 
 Let's assume in the MySQL database, there exists table problems_test_data. It contains details problem_id, input_filepath, input_file_updated_at, input_file_created_at for input files, and similar details for the output files as well. If a file is updated on the file storage, its metadata will also be updated in the SQL database.
+</mark>
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/684/original/upload_aca01aed979fd56a68fb9931a0fa2b12.png?1695236910)
 
