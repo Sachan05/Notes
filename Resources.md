@@ -26,6 +26,8 @@
 
    - **System Design - Alex Xu**
 
+   - https://github.com/ashishps1/awesome-low-level-design
+   - https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file
 
       
 
