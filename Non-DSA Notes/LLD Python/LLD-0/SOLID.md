@@ -27,3 +27,10 @@
 * ISP(Interface Segregation Principle) : Ideally every interface should have a single method. Interfaces should be as light as possible. Clients should not be forced to implement interfaces they don't use; a single class should not be burdened with implementing large interfaces. Create smaller, more specific interfaces. For birds, separate interfaces for fly and dance allow implementing classes to have only the necessary capabilities
 
 * DIP(Dependency Inversion Principle): No 2 concrete classes should depend on each other directly, they should depend on each other via interface. Depend upon abstractions, not concretions. High-level modules should not depend on low-level modules; both should depend on abstractions.  Use interface-based architectures where classes rely on abstractions rather than concrete implementations. This approach reduces tight coupling and allows for more flexible, interchangeable implementations
+
+
+####################
+####################
+####################
+
+
