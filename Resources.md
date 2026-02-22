@@ -4,6 +4,7 @@
      - [Leetcode : list of questions sorted by common patterns](https://leetcode.com/discuss/post/448285/list-of-questions-sorted-by-common-patte-936d)
      - [leetcode : top interview questions - Levels](https://leetcode.com/explore/interview/card/top-interview-questions-easy)
      - [Leetcode : Problemset](https://leetcode.com/problemset)
+     - Algomaster300
      - **[DSA Sheet ](https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)**
      
 
@@ -28,6 +29,7 @@
 
    - https://github.com/ashishps1/awesome-low-level-design
    - https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file
+   - https://github.com/tssovi/grokking-the-object-oriented-design-interview?tab=readme-ov-file
 
       
 
