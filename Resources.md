@@ -5,7 +5,7 @@
 
 * DSA :
   - Leetcode - 150
-  - [DSA Sheet/Algomaster300]((https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0))
+  - [DSA Sheet/Algomaster300](https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)
  
 * HLD :
   - Scaler Notes
