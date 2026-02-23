@@ -1,3 +1,36 @@
+
+----------
+##########
+----------
+
+* DSA :
+  - Leetcode - 150
+  - [DSA Sheet/Algomaster300]((https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0))
+ 
+* HLD :
+  - Scaler Notes
+  - [Github - ashishps]((https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file))
+ 
+* LLD :
+  - Scaler Notes
+  - [Github - tssovi](https://github.com/tssovi/grokking-the-object-oriented-design-interview?tab=readme-ov-file)
+  - [Github - ashishps](https://github.com/ashishps1/awesome-low-level-design)
+ 
+* ML :
+  - Google crash course
+ 
+* Project :
+  - chatgpt
+
+* AWS +  deployment
+
+
+
+
+----------
+##########
+----------
+
 **1) DSA :**
    - **[Leetcode : interview-top-150](https://leetcode.com/studyplan/top-interview-150)**
    - 
