@@ -4,23 +4,26 @@
 ----------
 
 * DSA :
-  - Leetcode - 150
+  - **[Leetcode : interview-top-150](https://leetcode.com/studyplan/top-interview-150)**
   - [DSA Sheet/Algomaster300](https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)
  
 * HLD :
   - Scaler Notes
-  - [Github - ashishps](https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file)
+  - [Github - ashishps](https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file)/[Gaurav Sen Playlist](https://www.youtube.com/watch?v=SqcXvc3ZmRU&list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX)
  
 * LLD :
   - Scaler Notes
-  - [Github - tssovi](https://github.com/tssovi/grokking-the-object-oriented-design-interview?tab=readme-ov-file)
-  - [Github - ashishps](https://github.com/ashishps1/awesome-low-level-design)
+  - [Github - ashishps](https://github.com/ashishps1/awesome-low-level-design)/[Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
  
 * ML :
-  - Google crash course
+  - [Gen AI course,RAG,agents - Udemy]
+  - [ML Specialization / ML in Production - Coursera] : Andrew Ng
+  - [DL Speacialization- Coursera] : Andrew Ng
  
 * Project :
-  - chatgpt
+  1) TextAnalyzer
+  2) Crash Triage
+  3) Rag+agent
 
 * AWS +  deployment
 
@@ -28,7 +31,9 @@
 
 
 ----------
+----------
 ##########
+----------
 ----------
 
 **1) DSA :**
@@ -54,15 +59,12 @@
       - **LLD :**
         - [Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
         - [Design Patterns in Python - Refactoring Guru](https://refactoring.guru/design-patterns/python)
+        - [Github - tssovi](https://github.com/tssovi/grokking-the-object-oriented-design-interview?tab=readme-ov-file)
        
       - **Other Topics :**
         - **[SDE sheet GFG : DSA, OS, DBMS, SQL, Networks](https://www.geeksforgeeks.org/dsa/sde-sheet-a-complete-guide-for-sde-preparation/)**
 
    - **System Design - Alex Xu**
-
-   - https://github.com/ashishps1/awesome-low-level-design
-   - https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file
-   - https://github.com/tssovi/grokking-the-object-oriented-design-interview?tab=readme-ov-file
 
       
 
@@ -80,7 +82,7 @@
 
 
 4) AWS :
-   - [Scaler - Youtube](https://www.youtube.com/watch?v=B8i49C8fC3E)
+   - [Scaler - Youtube](https://www.youtube.com/watch?v=B8i49C8fC3E)/AWS skill Builder
    - Chatgpt
 
 ------------------------------
@@ -95,12 +97,6 @@
 ------------------------------
 ------------------------------
 ------------------------------
-------------------------------
-------------------------------
-
-
-
-
 
 
 * DSA Patterns :
@@ -125,3 +121,6 @@
 * Pandas Interview Questions :
       - https://www.geeksforgeeks.org/pandas/pandas-interview-questions/
       - https://www.kaggle.com/code/icarofreire/pandas-24-useful-exercises-with-solutions
+
+------------------------------
+------------------------------
