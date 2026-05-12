@@ -9,7 +9,7 @@
  
 * HLD :
   - Scaler Notes
-  - [Github - ashishps]((https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file))
+  - [Github - ashishps](https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file)
  
 * LLD :
   - Scaler Notes
