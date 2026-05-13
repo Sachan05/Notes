@@ -26,7 +26,10 @@
   2) Crash Triage
   3) Rag+agent
 
+
 * AWS +  deployment - [AWS Skill Builder, AWS Developer Udemy]
+* Elasticsearch - [Udemy]
+* 
 
 
 
