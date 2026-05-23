@@ -3,33 +3,35 @@
 ##########
 ----------
 
-* DSA :
+* **DSA :**
   - **[Leetcode : interview-top-150](https://leetcode.com/studyplan/top-interview-150)**
-  - [DSA Sheet/Algomaster300](https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)
+  - **[DSA Sheet-codolio / Algomaster300]**(https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit?gid=0#gid=0)
  
-* HLD :
-  - Scaler Notes
+* **HLD :**
+  - **Scaler Notes**
+  - **Alex hu - book**
   - [Github - ashishps](https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file)/[Gaurav Sen Playlist](https://www.youtube.com/watch?v=SqcXvc3ZmRU&list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX)
  
-* LLD :
-  - Scaler Notes
+* **LLD :**
+  -**Scaler Notes**
   - [Github - ashishps](https://github.com/ashishps1/awesome-low-level-design)/[Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
  
-* ML :
-  - [Gen AI course,RAG,agents - Udemy]
-  - [ML Specialization / ML in Production - Coursera] : Andrew Ng
+* **ML :**
+  - **[Gen AI course,RAG,agents - Udemy]**
+  - **[ML Specialization / ML in Production - Coursera]** : Andrew Ng
   - [DL Speacialization- Coursera] : Andrew Ng
   - [NLP] - (NLP udemy, deeplearning.ai, youtube / chatgpt interview questions) 
  
-* Project :
-  1) TextAnalyzer
+* **Project:**
+  **1) TextAnalyzer**
   2) Crash Triage
-  3) Rag+agent
+  **3) Rag+agent**
+  **4) payment system (Scaler)**
 
 
-* AWS +  deployment - [AWS Skill Builder, AWS Developer Udemy]
-* Elasticsearch - [Udemy]
-* 
+* **Backend + AWS + deployment - [SCALER, youtube-siriniously, AWS Skill Builder]**
+* **Elasticsearch - [Udemy]**
+  
 
 
 
