@@ -26,11 +26,12 @@
   
   **1) TextAnalyzer**  
   2) Crash Triage    
-  **3) Rag+agent**    
+  **3) GenAI : Rag+agent**    
   **4) payment system (Scaler)**  
 
 
 * **Backend + AWS + deployment - [SCALER, youtube-siriniously, AWS Skill Builder]**
+* **Udemy : [RAG + Agentic AI]**
 * **Elasticsearch - [Udemy]**
   
 
