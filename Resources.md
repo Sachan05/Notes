@@ -22,11 +22,11 @@
   - [DL Speacialization- Coursera] : Andrew Ng
   - [NLP] - (NLP udemy, deeplearning.ai, youtube / chatgpt interview questions) 
  
-* **Project:**
-  **1) TextAnalyzer**
-  2) Crash Triage
-  **3) Rag+agent**
-  **4) payment system (Scaler)**
+* **Project:**  
+  **1) TextAnalyzer**  
+  **2) Crash Triage**  
+  3) Rag+agent  
+  **4) payment system (Scaler)**  
 
 
 * **Backend + AWS + deployment - [SCALER, youtube-siriniously, AWS Skill Builder]**
