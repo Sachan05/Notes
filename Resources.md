@@ -30,9 +30,9 @@
   **4) payment system (Scaler)**  
 
 
-* **Backend + AWS + deployment - [SCALER, youtube-siriniously, AWS Skill Builder]**
+* **Backend + AWS + Elasticsearch + deployment - [ SCALER, youtube-sriniously, AWS Skill Builder]**
 * **Udemy : [RAG + Agentic AI]**
-* **Elasticsearch - [Udemy]**
+
   
 
 
