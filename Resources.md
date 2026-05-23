@@ -13,7 +13,7 @@
   - [Github - ashishps](https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file)/[Gaurav Sen Playlist](https://www.youtube.com/watch?v=SqcXvc3ZmRU&list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX)
  
 * **LLD :**
-  -**Scaler Notes**
+  - **Scaler Notes**
   - [Github - ashishps](https://github.com/ashishps1/awesome-low-level-design)/[Gaurav Sen Playlist](https://www.youtube.com/watch?v=gktZsX9Z8Kw&list=PLMCXHnjXnTnvQVh7WsgZ8SurU1O2v_UM7)
  
 * **ML :**
