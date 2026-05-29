@@ -18,7 +18,7 @@
  
 * **ML :**
   - **[Gen AI course,RAG,agents - Udemy]**
-  - **[ML Fundamentals - interview questions]**
+  - **[ML Course - GOOGLE  +  ML - interview questions]**
   - **[ML Specialization / ML in Production - Coursera]** : Andrew Ng
   - [DL Speacialization- Coursera] : Andrew Ng
   - [NLP] - (NLP udemy, deeplearning.ai, youtube / chatgpt interview questions) 
