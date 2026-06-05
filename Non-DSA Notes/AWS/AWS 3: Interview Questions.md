@@ -1,3 +1,9 @@
+
+* [ AWS DOCUMENTATION : Official](https://docs.aws.amazon.com/)
+
+* [AWS services by category : Official](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/amazon-web-services-cloud-platform.html)
+
+
 * [AWS Interview Questions : GFG](https://www.geeksforgeeks.org/cloud-computing/aws-interview-questions/)
 
 * [100 AWS Interview Qeustions : devinterview.io](https://devinterview.io/questions/web-and-mobile-development/aws-interview-questions/)
