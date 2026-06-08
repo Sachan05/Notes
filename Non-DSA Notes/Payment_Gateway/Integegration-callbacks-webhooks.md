@@ -975,7 +975,7 @@ curl -X POST http://localhost:8000/webhook/payment/ \
 
 ---
 
-## Idempotency: Handling Duplicate Webhooks
+### Idempotency: Handling Duplicate Webhooks
 
 **Problem:** Gateways retry webhooks if they don't get a 200 response. You might process the same payment twice!
 
@@ -1237,11 +1237,16 @@ def webhook(request):
 </details>
 
 ---
+---
 
 ## 📚 Resources & Further Reading
 
-### Recommended Video
-- [Designing Idempotent API Endpoints for Payments at Stripe](https://www.youtube.com/watch?v=J2IcD9FZvZU&t=7s) — Deep dive into how Stripe designs idempotent APIs to prevent duplicate payments
+### Recommended Video <------
+- **[Designing Idempotent API Endpoints for Payments at Stripe](https://www.youtube.com/watch?v=J2IcD9FZvZU&t=7s) — Deep dive into how Stripe designs idempotent APIs to prevent duplicate payments**
+- **[Build a robust Payments service using Idempotency Keys](https://www.youtube.com/watch?v=m6DtqSb1BDM)**
+
+---
+---
 
 ### Official Documentation
 - [Stripe Webhooks Guide](https://stripe.com/docs/webhooks)
