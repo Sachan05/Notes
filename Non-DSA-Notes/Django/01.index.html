@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 1: Module Overview & Intro to Backend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a2e;
+            --bg-section: #0f0f15;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-section: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .theme-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent-primary);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 120px 60px 80px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-section);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 700px;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero-meta {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+
+        .hero-tagline strong {
+            color: var(--warning);
+        }
+
+        .hero-tagline .creator {
+            color: var(--success);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .comparison-col {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .comparison-header {
+            padding: 20px 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: var(--bg-tertiary);
+        }
+
+        .comparison-items {
+            padding: 20px 25px;
+        }
+
+        .comparison-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .comparison-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Quiz/Question Components */
+        .question-block {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .question-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .question-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .question-option {
+            padding: 18px 24px;
+            background: var(--bg-tertiary);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .question-option:hover {
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .question-option.selected {
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .question-option.correct {
+            border-color: var(--success);
+            background: rgba(16, 185, 129, 0.15);
+        }
+
+        .question-option.incorrect {
+            border-color: var(--danger);
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        .option-marker {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .question-btn {
+            margin-top: 25px;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .question-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .question-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .question-result.show {
+            display: block;
+        }
+
+        .question-result.correct {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .question-result.incorrect {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .question-explanation {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-primary);
+            display: none;
+        }
+
+        .question-explanation.show {
+            display: block;
+        }
+
+        .question-explanation h4 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        /* Curriculum Table */
+        .curriculum-container {
+            margin-top: 40px;
+        }
+
+        .module-block {
+            margin-bottom: 30px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .module-block.current {
+            border-color: var(--success);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .module-header {
+            padding: 20px 25px;
+            background: var(--bg-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .module-header:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .module-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .module-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .module-badge.current {
+            background: var(--success);
+            color: white;
+        }
+
+        .module-badge.upcoming {
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .module-classes {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .module-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .module-content.expanded {
+            padding: 20px 25px;
+            max-height: 2000px;
+        }
+
+        .class-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .class-item:last-child {
+            border-bottom: none;
+        }
+
+        .class-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .class-item.current .class-number {
+            background: var(--success);
+            color: white;
+        }
+
+        .class-topic {
+            flex: 1;
+            color: var(--text-secondary);
+        }
+
+        .class-item.current .class-topic {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .class-item-detailed {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .class-item-detailed:last-child {
+            border-bottom: none;
+        }
+
+        .class-item-detailed .class-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .class-item-detailed.current .class-number {
+            background: var(--success);
+            color: white;
+        }
+
+        .class-info {
+            flex: 1;
+        }
+
+        .class-item-detailed .class-topic {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .class-item-detailed.current .class-topic {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .class-analogy {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Interview Questions */
+        .interview-q {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .interview-q:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .interview-question {
+            padding: 16px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .interview-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            font-weight: 300;
+        }
+
+        .interview-q.revealed .interview-question::after {
+            content: '−';
+        }
+
+        .interview-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
+            line-height: 1.8;
+        }
+
+        .interview-q.revealed .interview-answer {
+            max-height: 500px;
+            padding: 16px 20px;
+        }
+
+        /* Restaurant Flow */
+        .restaurant-flow {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .flow-step:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        .flow-step.revealed {
+            border-color: var(--success);
+        }
+
+        .flow-step-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .flow-step-restaurant {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .flow-step-tech {
+            color: var(--success);
+            font-weight: 600;
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+        }
+
+        .flow-step.revealed .flow-step-tech {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flow-step-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--accent-primary);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .highlight-box.warning {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(234, 88, 12, 0.1));
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .highlight-box.success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        /* HTTP Methods */
+        .http-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .http-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .http-card.get { border-color: #10b981; }
+        .http-card.post { border-color: #f59e0b; }
+        .http-card.put { border-color: #3b82f6; }
+        .http-card.delete { border-color: #ef4444; }
+
+        .http-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .http-method {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 12px;
+        }
+
+        .http-card.get .http-method { color: #10b981; }
+        .http-card.post .http-method { color: #f59e0b; }
+        .http-card.put .http-method { color: #3b82f6; }
+        .http-card.delete .http-method { color: #ef4444; }
+
+        .http-analogy {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .http-sql {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-primary);
+            font-size: 0.95rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .http-card.revealed .http-sql {
+            opacity: 1;
+        }
+
+        /* JSON Display */
+        .json-block {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 25px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        [data-theme="light"] .json-block {
+            background: #1e293b;
+        }
+
+        .json-key { color: #89b4fa; }
+        .json-string { color: #a6e3a1; }
+        .json-number { color: #fab387; }
+        .json-boolean { color: #f38ba8; }
+        .json-bracket { color: #cdd6f4; }
+
+        /* Tech Stack */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .tech-table th,
+        .tech-table td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tech-table th {
+            background: var(--bg-tertiary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .tech-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tech-table tr:hover td {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .tech-table tr.highlight td {
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .tech-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .tech-icon {
+            font-size: 1.5rem;
+        }
+
+        .strength-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Localhost vs Cloud */
+        .deployment-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .deployment-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .deployment-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .deployment-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .deployment-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .deployment-analogy {
+            color: var(--accent-secondary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .deployment-desc {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .deployment-pros-cons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pro, .con {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+        }
+
+        .pro { color: var(--success); }
+        .con { color: var(--danger); }
+
+        /* Footer */
+        footer {
+            padding: 60px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* Interactive instruction */
+        .interact-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--bg-tertiary);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 20px 0;
+        }
+
+        /* External link */
+        .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .external-link:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            section {
+                padding: 100px 30px 60px;
+            }
+
+            .nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .comparison-grid,
+            .two-col,
+            .deployment-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .http-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .restaurant-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .tech-table {
+                font-size: 0.85rem;
+            }
+
+            .tech-table th,
+            .tech-table td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav class="nav">
+        <div class="nav-brand">Backend Engineering • Class 1</div>
+        <ul class="nav-links">
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#restaurant">Restaurant</a></li>
+            <li><a href="#http">HTTP</a></li>
+            <li><a href="#tech">Tech Stack</a></li>
+        </ul>
+        <button class="theme-btn" onclick="toggleTheme()">
+            <span id="themeIcon">☀️</span>
+            <span>Theme</span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <div class="hero-icon">🚀</div>
+        <h1>Backend Engineering</h1>
+        <p class="hero-meta">Python Backend LLD Module • Class 1 of 16</p>
+        <p class="hero-tagline">
+            Today we shift from <strong>Consumer</strong> to <span class="creator">Creator</span>.<br>
+            Code that doesn't just run on your laptop — code that runs the world.
+        </p>
+        <div class="scroll-indicator">
+            <span>Scroll to begin</span>
+            <span>↓</span>
+        </div>
+    </section>
+
+    <!-- Section 1: Introduction -->
+    <section id="intro">
+        <div class="section-container">
+            <span class="section-label">Getting Started</span>
+            <h2 class="section-title">What is Backend?</h2>
+            <p class="section-subtitle">The code that runs when you're not watching. The logic behind every app you use.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-col">
+                    <div class="comparison-header">👁️ What Users See</div>
+                    <div class="comparison-items">
+                        <div class="comparison-item"><span>📱</span> Beautiful mobile app interface</div>
+                        <div class="comparison-item"><span>🖱️</span> Click "Place Order" button</div>
+                        <div class="comparison-item"><span>⏳</span> Loading spinner appears</div>
+                        <div class="comparison-item"><span>✅</span> "Order Confirmed!" message</div>
+                    </div>
+                </div>
+                <div class="comparison-col">
+                    <div class="comparison-header">⚙️ What Actually Happens</div>
+                    <div class="comparison-items">
+                        <div class="comparison-item"><span>📡</span> HTTP request travels to server</div>
+                        <div class="comparison-item"><span>🔐</span> Server validates user authentication</div>
+                        <div class="comparison-item"><span>💾</span> Database stores order data</div>
+                        <div class="comparison-item"><span>📧</span> Email/SMS notifications triggered</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 50px;">
+                <h3 style="margin-bottom: 15px;">🎯 The Core Idea</h3>
+                <p style="font-size: 1.2rem; color: var(--text-primary);">
+                    <strong>Frontend</strong> = What the user sees and interacts with (buttons, forms, animations)<br><br>
+                    <strong>Backend</strong> = The logic, data, and processing that makes those interactions meaningful
+                </p>
+            </div>
+
+            <h3 style="margin-top: 60px; margin-bottom: 20px;">DSA vs Backend: Different Skills</h3>
+            <div class="comparison-grid">
+                <div class="comparison-col">
+                    <div class="comparison-header">📚 DSA Classes</div>
+                    <div class="comparison-items">
+                        <div class="comparison-item"><span>💻</span> Code runs on your laptop</div>
+                        <div class="comparison-item"><span>🧩</span> Solves algorithmic puzzles</div>
+                        <div class="comparison-item"><span>⏱️</span> Focus on time complexity</div>
+                        <div class="comparison-item"><span>👤</span> Single execution at a time</div>
+                    </div>
+                </div>
+                <div class="comparison-col">
+                    <div class="comparison-header">🌐 Backend Engineering</div>
+                    <div class="comparison-items">
+                        <div class="comparison-item"><span>☁️</span> Code runs on servers 24/7</div>
+                        <div class="comparison-item"><span>🏗️</span> Builds real products</div>
+                        <div class="comparison-item"><span>📈</span> Focus on reliability & scale</div>
+                        <div class="comparison-item"><span>👥</span> Thousands of users at once</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple Question 1 -->
+            <div class="question-block" id="q1">
+                <div class="question-label">🤔 Quick Check</div>
+                <div class="question-text">
+                    When you open Instagram and scroll your feed, which part is the "backend"?
+                </div>
+                <div class="question-options">
+                    <div class="question-option" onclick="selectOption(this, 'q1')" data-correct="false">
+                        <span class="option-marker">A</span>
+                        <span>The photos and videos you see on screen</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q1')" data-correct="false">
+                        <span class="option-marker">B</span>
+                        <span>The like button animation</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q1')" data-correct="true">
+                        <span class="option-marker">C</span>
+                        <span>The server that decides which posts to show you and fetches them</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q1')" data-correct="false">
+                        <span class="option-marker">D</span>
+                        <span>Your phone's operating system</span>
+                    </div>
+                </div>
+                <button class="question-btn" onclick="checkAnswer('q1')">Check Answer</button>
+                <div class="question-result" id="q1-result"></div>
+                <div class="question-explanation" id="q1-explanation">
+                    <h4>💡 Backend = The Brain</h4>
+                    <p>The backend is Instagram's servers deciding which posts appear in your feed (the recommendation algorithm), storing all the photos, handling likes, comments, and follows. The pretty UI you see is frontend — it just displays what the backend sends.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 60px; margin-bottom: 30px;">Prerequisites</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🐍</div>
+                    <div class="card-title">Python Basics</div>
+                    <div class="card-desc">Variables, loops, functions, classes. If you can write a class with methods, you're ready.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Data Structures</div>
+                    <div class="card-desc">Lists, dictionaries, sets. You'll be manipulating data constantly.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧱</div>
+                    <div class="card-title">OOP Concepts</div>
+                    <div class="card-desc">Inheritance, encapsulation. Django is heavily object-oriented.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">Terminal Basics</div>
+                    <div class="card-desc">cd, mkdir, ls, etc. <a href="https://www.terminaltutor.com/" target="_blank" style="color: var(--accent-primary);">Interactive tutorial →</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Full Curriculum -->
+    <section id="curriculum">
+        <div class="section-container">
+            <span class="section-label">The Big Picture</span>
+            <h2 class="section-title">Your Complete Learning Path</h2>
+            <p class="section-subtitle">4 modules, 56 classes. Here's everything you'll master by the end.</p>
+
+            <div class="curriculum-container">
+                <!-- Module 1: Backend Project with Restaurant Analogies -->
+                <div class="module-block current">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-name">
+                            <span>🚀</span>
+                            <span>Backend Project</span>
+                            <span class="module-badge current">YOU ARE HERE</span>
+                        </div>
+                        <div class="module-classes">16 classes</div>
+                    </div>
+                    <div class="module-content expanded">
+                        <div class="class-item-detailed current">
+                            <div class="class-number">1</div>
+                            <div class="class-info">
+                                <div class="class-topic">Module Overview, Intro to Backend</div>
+                                <div class="class-analogy">🍽️ What is a restaurant? Who are the actors?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">2</div>
+                            <div class="class-info">
+                                <div class="class-topic">Git, Commits, Merge, Rebase</div>
+                                <div class="class-analogy">📖 How do multiple chefs work on the same recipe book?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">3</div>
+                            <div class="class-info">
+                                <div class="class-topic">Git Remotes, Forks, Pull Requests</div>
+                                <div class="class-analogy">🌐 How do chefs across branches share recipes?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">4</div>
+                            <div class="class-info">
+                                <div class="class-topic">Django Apps, Views, URL Mapping</div>
+                                <div class="class-analogy">🚪 Who greets customers and routes them to tables?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">5</div>
+                            <div class="class-info">
+                                <div class="class-topic">Django Models and Admin</div>
+                                <div class="class-analogy">📦 How does the kitchen track inventory?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">6</div>
+                            <div class="class-info">
+                                <div class="class-topic">REST Framework and Serializers</div>
+                                <div class="class-analogy">📋 How do we design the menu and plate the food?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">7</div>
+                            <div class="class-info">
+                                <div class="class-topic">Inheritance, IDs, Custom Queries</div>
+                                <div class="class-analogy">🍔 How do we handle dish categories and combos?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">8</div>
+                            <div class="class-info">
+                                <div class="class-topic">Cardinalities, N+1 Problem, Migrations</div>
+                                <div class="class-analogy">🥗 How do we manage ingredient relationships efficiently?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">9</div>
+                            <div class="class-info">
+                                <div class="class-topic">Exception Handling, Middlewares</div>
+                                <div class="class-analogy">😤 What if a dish fails? How do we handle complaints?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">10</div>
+                            <div class="class-info">
+                                <div class="class-topic">Intro to AWS, EC2, RDS</div>
+                                <div class="class-analogy">🏭 Moving from home kitchen to commercial kitchen</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">11</div>
+                            <div class="class-info">
+                                <div class="class-topic">AWS VPC, Security Groups, Route 53</div>
+                                <div class="class-analogy">🔐 Securing the building, staff-only areas, signage</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">12</div>
+                            <div class="class-info">
+                                <div class="class-topic">Payment Callbacks, Webhooks</div>
+                                <div class="class-analogy">💳 How does the card machine talk to the bank?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">13</div>
+                            <div class="class-info">
+                                <div class="class-topic">Payment Flow Deep Dive</div>
+                                <div class="class-analogy">💳 What if payment fails mid-transaction?</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">14</div>
+                            <div class="class-info">
+                                <div class="class-topic">Reconciliation, Crons, Stripe</div>
+                                <div class="class-analogy">📊 Daily cash register balancing and reports</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">15</div>
+                            <div class="class-info">
+                                <div class="class-topic">Pagination, Searching, Sorting</div>
+                                <div class="class-analogy">📚 Organizing a 100-page menu efficiently</div>
+                            </div>
+                        </div>
+                        <div class="class-item-detailed">
+                            <div class="class-number">16</div>
+                            <div class="class-info">
+                                <div class="class-topic">Redis, API Optimization, Resume</div>
+                                <div class="class-analogy">⚡ Making the kitchen faster during rush hour</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2: Advanced Programming Concepts -->
+                <div class="module-block">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-name">
+                            <span>🧠</span>
+                            <span>Advanced Programming Concepts</span>
+                            <span class="module-badge upcoming">UPCOMING</span>
+                        </div>
+                        <div class="module-classes">12 classes</div>
+                    </div>
+                    <div class="module-content">
+                        <div class="class-item">
+                            <div class="class-number">1</div>
+                            <div class="class-topic">Intro to LLD and Module Overview</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">2</div>
+                            <div class="class-topic">OOP-1: Intro to OOP, Access Modifiers, Constructors</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">3</div>
+                            <div class="class-topic">OOP-2: Inheritance and Polymorphism</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">4</div>
+                            <div class="class-topic">OOP-3: Static and Abstract Base Class</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">5</div>
+                            <div class="class-topic">Concurrency-1: Introduction to Processes and Threads</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">6</div>
+                            <div class="class-topic">Concurrency-2: Executors and Futures</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">7</div>
+                            <div class="class-topic">Concurrency-3: Semaphores and Deadlocks</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">8</div>
+                            <div class="class-topic">Concurrency-4: Asynchronous I/O</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">9</div>
+                            <div class="class-topic">Python Advanced: Typing and Generics</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">10</div>
+                            <div class="class-topic">Python Advanced: Collections</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">11</div>
+                            <div class="class-topic">Python Advanced: Lambda and Functional Programming</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">12</div>
+                            <div class="class-topic">Python Advanced: Exception Handling & Misc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3: Low Level Design -->
+                <div class="module-block">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-name">
+                            <span>🏗️</span>
+                            <span>Low Level Design</span>
+                            <span class="module-badge upcoming">UPCOMING</span>
+                        </div>
+                        <div class="module-classes">18 classes</div>
+                    </div>
+                    <div class="module-content">
+                        <div class="class-item">
+                            <div class="class-number">1</div>
+                            <div class="class-topic">SOLID Principles</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">2</div>
+                            <div class="class-topic">Intro to Design Patterns, Singleton</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">3</div>
+                            <div class="class-topic">Builder Pattern</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">4</div>
+                            <div class="class-topic">Factory, Prototype Patterns</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">5</div>
+                            <div class="class-topic">Adapter, Strategy Patterns</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">6</div>
+                            <div class="class-topic">Observer, Decorator Patterns</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">7</div>
+                            <div class="class-topic">UML Diagrams</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">8</div>
+                            <div class="class-topic">Types of LLD Interviews, Problem Approach</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">9-10</div>
+                            <div class="class-topic">Design & Code TicTacToe</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">11-12</div>
+                            <div class="class-topic">Design & Code Parking Lot</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">13-14</div>
+                            <div class="class-topic">Design & Code BookMyShow</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">15-16</div>
+                            <div class="class-topic">Design & Code Splitwise</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">17-18</div>
+                            <div class="class-topic">Design Google Calendar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4: Advanced Software Engineering -->
+                <div class="module-block">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <div class="module-name">
+                            <span>🔧</span>
+                            <span>Advanced Software Engineering</span>
+                            <span class="module-badge upcoming">UPCOMING</span>
+                        </div>
+                        <div class="module-classes">10 classes</div>
+                    </div>
+                    <div class="module-content">
+                        <div class="class-item">
+                            <div class="class-number">1</div>
+                            <div class="class-topic">Intro to Unit Testing, Best Practices</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">2</div>
+                            <div class="class-topic">Mocking and Web MVC Tests</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">3</div>
+                            <div class="class-topic">Authentication-1: Auth vs Auth, Tokens, BCrypt</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">4</div>
+                            <div class="class-topic">Authentication-2: JWT, OAuth 2</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">5</div>
+                            <div class="class-topic">Authentication-3: Implementing User Service</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">6</div>
+                            <div class="class-topic">Authentication-4: Implementing OAuth 2</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">7</div>
+                            <div class="class-topic">Email Service - Intro to Message Queues</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">8</div>
+                            <div class="class-topic">Spring Cloud</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">9</div>
+                            <div class="class-topic">Logging and Monitoring</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-number">10</div>
+                            <div class="class-topic">Containerization</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Restaurant Analogy -->
+    <section id="restaurant">
+        <div class="section-container">
+            <span class="section-label">Mental Model</span>
+            <h2 class="section-title">The Restaurant Analogy</h2>
+            <p class="section-subtitle">Backend systems are invisible. Let's translate them to something tangible — a restaurant where every role maps to a technical component.</p>
+
+            <p class="interact-hint">👆 Click each component to reveal its technical equivalent</p>
+
+            <div class="restaurant-flow" id="restaurantFlow">
+                <div class="flow-step" onclick="revealStep(0)" id="step-0">
+                    <div class="flow-step-icon">🧑‍💼</div>
+                    <div class="flow-step-restaurant">Customer</div>
+                    <div class="flow-step-tech">= Client</div>
+                    <div class="flow-step-desc">Hungry, wants food (data)</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step" onclick="revealStep(1)" id="step-1">
+                    <div class="flow-step-icon">📋</div>
+                    <div class="flow-step-restaurant">Menu</div>
+                    <div class="flow-step-tech">= API Specification</div>
+                    <div class="flow-step-desc">What's available to order</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step" onclick="revealStep(2)" id="step-2">
+                    <div class="flow-step-icon">🤵</div>
+                    <div class="flow-step-restaurant">Waiter</div>
+                    <div class="flow-step-tech">= Controller</div>
+                    <div class="flow-step-desc">Takes order, validates, routes</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step" onclick="revealStep(3)" id="step-3">
+                    <div class="flow-step-icon">👨‍🍳</div>
+                    <div class="flow-step-restaurant">Chef</div>
+                    <div class="flow-step-tech">= Service (Business Logic)</div>
+                    <div class="flow-step-desc">Prepares the dish, knows recipes</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step" onclick="revealStep(4)" id="step-4">
+                    <div class="flow-step-icon">🏪</div>
+                    <div class="flow-step-restaurant">Pantry</div>
+                    <div class="flow-step-tech">= Database (Model)</div>
+                    <div class="flow-step-desc">Stores all ingredients (data)</div>
+                </div>
+            </div>
+
+            <div class="highlight-box warning" style="margin-top: 50px;">
+                <h3 style="margin-bottom: 15px;">🔐 The Golden Rule</h3>
+                <p style="font-size: 1.2rem; color: var(--text-primary);">
+                    <strong>The Customer never enters the Kitchen.</strong><br><br>
+                    They must go through the Waiter. In tech terms: the browser never talks directly to the database. Everything goes through the backend server. This is fundamental to security and organization.
+                </p>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block" id="q2">
+                <div class="question-label">🤔 Apply the Analogy</div>
+                <div class="question-text">
+                    In a restaurant, the waiter checks if an item is available before sending the order to the kitchen. What does this represent in backend terms?
+                </div>
+                <div class="question-options">
+                    <div class="question-option" onclick="selectOption(this, 'q2')" data-correct="false">
+                        <span class="option-marker">A</span>
+                        <span>Loading a webpage</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q2')" data-correct="true">
+                        <span class="option-marker">B</span>
+                        <span>Input validation — checking if the request is valid before processing</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q2')" data-correct="false">
+                        <span class="option-marker">C</span>
+                        <span>Storing data in the database</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q2')" data-correct="false">
+                        <span class="option-marker">D</span>
+                        <span>Displaying an error message</span>
+                    </div>
+                </div>
+                <button class="question-btn" onclick="checkAnswer('q2')">Check Answer</button>
+                <div class="question-result" id="q2-result"></div>
+                <div class="question-explanation" id="q2-explanation">
+                    <h4>💡 Validation = Checking Before Cooking</h4>
+                    <p>Just like a waiter checks "Is this item on the menu? Do we have the ingredients?" — your server validates requests before processing them. Is the user logged in? Is the data in the right format? Does the requested item exist? This prevents wasted work and protects the system.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 60px; margin-bottom: 20px;">MVC Architecture</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 25px;">Most backend frameworks follow the <strong>Model-View-Controller</strong> pattern. Here's how it maps to our restaurant:</p>
+
+            <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="card">
+                    <div class="card-icon">🎮</div>
+                    <div class="card-title">Controller</div>
+                    <div class="card-desc">
+                        <strong>Waiter</strong> — Receives requests, validates input, decides what to do, returns response.<br><br>
+                        <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem;">views.py</code> in Django
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">Service</div>
+                    <div class="card-desc">
+                        <strong>Chef</strong> — Contains business logic. Knows how to "cook" — process data, apply rules, make decisions.<br><br>
+                        <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem;">services.py</code> (custom)
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💾</div>
+                    <div class="card-title">Model</div>
+                    <div class="card-desc">
+                        <strong>Pantry</strong> — Data structure and database interaction. Stores and retrieves ingredients.<br><br>
+                        <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem;">models.py</code> in Django
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <p style="color: var(--text-primary); font-size: 1.1rem;">
+                    <strong>The Flow:</strong> Client → Controller (validates) → Service (processes) → Model (data) → back up the chain
+                </p>
+            </div>
+
+            <h3 style="margin-top: 60px; margin-bottom: 20px;">Key Definitions</h3>
+            <div class="two-col">
+                <div class="card">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 10px;">Client-Server Architecture</h4>
+                    <p style="color: var(--text-secondary);">A system where the <strong>Client</strong> (browser, app, another server, AI agent) makes requests, and the <strong>Server</strong> responds. They're separate programs communicating over a network.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 10px;">API (Application Programming Interface)</h4>
+                    <p style="color: var(--text-secondary);">A defined set of rules for communication. Like a menu — it lists exactly what you can order, not every possible combination of ingredients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: HTTP & Request/Response -->
+    <section id="http">
+        <div class="section-container">
+            <span class="section-label">Core Concepts</span>
+            <h2 class="section-title">HTTP: The Language of the Web</h2>
+            <p class="section-subtitle">When your browser talks to a server, they speak HTTP. It's a structured conversation with clear "verbs" for different intentions.</p>
+
+            <p class="interact-hint">👆 Click each HTTP method to reveal its SQL equivalent</p>
+
+            <div class="http-grid" id="httpGrid">
+                <div class="http-card get" onclick="revealHTTP(this)">
+                    <div class="http-method">GET</div>
+                    <div class="http-analogy">"Show me the menu"</div>
+                    <div class="http-sql">≈ SELECT</div>
+                </div>
+                <div class="http-card post" onclick="revealHTTP(this)">
+                    <div class="http-method">POST</div>
+                    <div class="http-analogy">"I want to place an order"</div>
+                    <div class="http-sql">≈ INSERT</div>
+                </div>
+                <div class="http-card put" onclick="revealHTTP(this)">
+                    <div class="http-method">PUT</div>
+                    <div class="http-analogy">"Change my order"</div>
+                    <div class="http-sql">≈ UPDATE</div>
+                </div>
+                <div class="http-card delete" onclick="revealHTTP(this)">
+                    <div class="http-method">DELETE</div>
+                    <div class="http-analogy">"Cancel my order"</div>
+                    <div class="http-sql">≈ DELETE</div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin: 40px 0;">
+                <h3 style="margin-bottom: 15px;">🔗 Why Not Just Use SQL Directly?</h3>
+                <p style="color: var(--text-primary);">
+                    Browsers can't (and shouldn't) run SQL directly. That's a feature, not a bug.<br><br>
+                    <code style="background: var(--bg-tertiary); padding: 4px 10px; border-radius: 6px; color: var(--danger);">Browser → DELETE FROM users WHERE id=1</code> ❌ Anyone could delete anything!<br><br>
+                    <code style="background: var(--bg-tertiary); padding: 4px 10px; border-radius: 6px; color: var(--success);">Browser → DELETE /api/users/1</code> ✅ Server checks if you're allowed first
+                </p>
+            </div>
+
+            <h3 style="margin-top: 60px; margin-bottom: 20px;">The Request-Response Cycle</h3>
+            <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="card">
+                    <div class="card-icon">📤</div>
+                    <div class="card-title">1. Request</div>
+                    <div class="card-desc">Browser sends HTTP request with method (GET/POST), URL, headers, and optionally a body.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">2. Processing</div>
+                    <div class="card-desc">Server validates, authenticates, queries database, applies business logic.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📥</div>
+                    <div class="card-title">3. Response</div>
+                    <div class="card-desc">Server returns status code (200, 404, 500...), headers, and response body (usually JSON).</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 60px; margin-bottom: 20px;">JSON: How Data Travels</h3>
+            <div class="two-col">
+                <div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Data doesn't travel as database rows. It's packaged in <strong>JSON</strong> — a lightweight format that looks exactly like Python dictionaries.</p>
+                    <div class="json-block">
+<span class="json-bracket">{</span>
+  <span class="json-key">"user_id"</span>: <span class="json-number">101</span>,
+  <span class="json-key">"username"</span>: <span class="json-string">"backend_dev"</span>,
+  <span class="json-key">"is_verified"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"skills"</span>: [<span class="json-string">"Python"</span>, <span class="json-string">"Django"</span>]
+<span class="json-bracket">}</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 style="margin-bottom: 15px;">Why JSON?</h4>
+                    <ul style="color: var(--text-secondary); line-height: 2;">
+                        <li>✅ Human readable</li>
+                        <li>✅ Machine parseable</li>
+                        <li>✅ Language agnostic</li>
+                        <li>✅ Lightweight</li>
+                        <li>✅ Native JavaScript support</li>
+                        <li>✅ Maps directly to Python dicts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-block" id="q3">
+                <div class="question-label">🤔 HTTP Methods</div>
+                <div class="question-text">
+                    A user wants to update their profile picture. Which HTTP method should be used?
+                </div>
+                <div class="question-options">
+                    <div class="question-option" onclick="selectOption(this, 'q3')" data-correct="false">
+                        <span class="option-marker">A</span>
+                        <span>GET — we're getting a new picture</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q3')" data-correct="false">
+                        <span class="option-marker">B</span>
+                        <span>POST — we're posting a picture</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q3')" data-correct="true">
+                        <span class="option-marker">C</span>
+                        <span>PUT — we're updating existing data</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q3')" data-correct="false">
+                        <span class="option-marker">D</span>
+                        <span>DELETE — we're replacing the old picture</span>
+                    </div>
+                </div>
+                <button class="question-btn" onclick="checkAnswer('q3')">Check Answer</button>
+                <div class="question-result" id="q3-result"></div>
+                <div class="question-explanation" id="q3-explanation">
+                    <h4>💡 PUT = Update</h4>
+                    <p>The user already has a profile — we're <strong>updating</strong> it with a new picture. POST is for creating new resources, GET is for reading, DELETE is for removing. PUT (or PATCH for partial updates) is for modifying existing data.</p>
+                </div>
+            </div>
+
+            <!-- Question 4: The Crawler Problem -->
+            <div class="question-block" id="q4">
+                <div class="question-label">🧠 Why This Matters</div>
+                <div class="question-text">
+                    A developer builds "delete account" using <code style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">GET /delete-account/123</code>. Google's crawler visits the site, follows all links... and deletes 500 accounts. What went wrong?
+                </div>
+                <div class="question-options">
+                    <div class="question-option" onclick="selectOption(this, 'q4')" data-correct="false">
+                        <span class="option-marker">A</span>
+                        <span>Google shouldn't crawl authenticated pages</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q4')" data-correct="true">
+                        <span class="option-marker">B</span>
+                        <span>GET must be "safe" — destructive actions need POST or DELETE</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q4')" data-correct="false">
+                        <span class="option-marker">C</span>
+                        <span>The URL was too predictable</span>
+                    </div>
+                    <div class="question-option" onclick="selectOption(this, 'q4')" data-correct="false">
+                        <span class="option-marker">D</span>
+                        <span>Links shouldn't be used for navigation</span>
+                    </div>
+                </div>
+                <button class="question-btn" onclick="checkAnswer('q4')">Check Answer</button>
+                <div class="question-result" id="q4-result"></div>
+                <div class="question-explanation" id="q4-explanation">
+                    <h4>💡 GET = Safe, No Side Effects</h4>
+                    <p>HTTP methods have <strong>semantic meaning</strong>. GET should only read data, never modify it. Crawlers, browser prefetchers, and extensions assume GET links are safe to follow. Destructive operations must use POST, PUT, or DELETE — these aren't triggered by simply visiting a URL. This is baked into how the web works.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Tech Stack -->
+    <section id="tech">
+        <div class="section-container">
+            <span class="section-label">Tools of the Trade</span>
+            <h2 class="section-title">Backend Tech Stack</h2>
+            <p class="section-subtitle">Every language has strengths. We're using Python/Django, but understanding the landscape helps you make informed decisions.</p>
+
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Language</th>
+                        <th>Framework</th>
+                        <th>Best For</th>
+                        <th>Learning Curve</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td>
+                            <div class="tech-name-cell">
+                                <span class="tech-icon">🐍</span>
+                                <span>Python</span>
+                            </div>
+                        </td>
+                        <td>Django / FastAPI</td>
+                        <td>Rapid development, startups, ML integration, readable code</td>
+                        <td><span class="strength-badge" style="background: #10b981; color: white;">Easy</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="tech-name-cell">
+                                <span class="tech-icon">☕</span>
+                                <span>Java</span>
+                            </div>
+                        </td>
+                        <td>Spring Boot</td>
+                        <td>Enterprise systems, strong typing, large codebases, banks</td>
+                        <td><span class="strength-badge">Medium</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="tech-name-cell">
+                                <span class="tech-icon">💚</span>
+                                <span>Node.js</span>
+                            </div>
+                        </td>
+                        <td>Express / NestJS</td>
+                        <td>Real-time apps, JavaScript everywhere, fast I/O</td>
+                        <td><span class="strength-badge" style="background: #10b981; color: white;">Easy</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="tech-name-cell">
+                                <span class="tech-icon">🔵</span>
+                                <span>Go</span>
+                            </div>
+                        </td>
+                        <td>Gin / Standard Lib</td>
+                        <td>High-performance, concurrency, infrastructure tools</td>
+                        <td><span class="strength-badge">Medium</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="tech-name-cell">
+                                <span class="tech-icon">🦀</span>
+                                <span>Rust</span>
+                            </div>
+                        </td>
+                        <td>Actix / Axum</td>
+                        <td>Maximum performance, memory safety, systems programming</td>
+                        <td><span class="strength-badge" style="background: #ef4444; color: white;">Hard</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="https://www.techempower.com/benchmarks/" target="_blank" class="external-link">
+                <span>📊</span>
+                <span>TechEmpower Benchmarks — Compare Framework Performance →</span>
+            </a>
+
+            <h3 style="margin-top: 60px; margin-bottom: 20px;">Home Kitchen vs. Cloud Kitchen</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Where does your code actually run?</p>
+
+            <div class="deployment-comparison">
+                <div class="deployment-card">
+                    <div class="deployment-icon">🏠</div>
+                    <div class="deployment-title">Localhost</div>
+                    <div class="deployment-analogy">= Cooking at Home</div>
+                    <div class="deployment-desc">
+                        Your personal kitchen. You cook for yourself, your rules, your schedule. Nobody else can taste your food unless they come to your house.
+                    </div>
+                    <div class="deployment-pros-cons">
+                        <div class="pro">✅ Free to run</div>
+                        <div class="pro">✅ Fast to iterate and experiment</div>
+                        <div class="pro">✅ Full control</div>
+                        <div class="con">❌ Only you can access it</div>
+                        <div class="con">❌ Stops when laptop sleeps</div>
+                        <div class="con">❌ Can't serve many people</div>
+                    </div>
+                </div>
+                <div class="deployment-card">
+                    <div class="deployment-icon">🏭</div>
+                    <div class="deployment-title">Cloud (AWS/GCP/Azure)</div>
+                    <div class="deployment-analogy">= Cloud Kitchen</div>
+                    <div class="deployment-desc">
+                        A professional kitchen you rent. Open 24/7, can handle hundreds of orders, delivery to anywhere. You pay for the space but get professional equipment and scale.
+                    </div>
+                    <div class="deployment-pros-cons">
+                        <div class="pro">✅ Always available (24/7/365)</div>
+                        <div class="pro">✅ Scales to millions of users</div>
+                        <div class="pro">✅ Professional infrastructure</div>
+                        <div class="con">❌ Costs money (pay per use)</div>
+                        <div class="con">❌ More complex to set up</div>
+                        <div class="con">❌ Learning curve for tools</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p style="font-size: 1.1rem; color: var(--text-primary);">
+                    <strong>"There is no cloud — it's just someone else's computer."</strong><br><br>
+                    True! But that "someone else" (AWS, Google) has millions of computers in data centers worldwide, with redundant power, cooling, security, and 99.99% uptime. That's the difference between a home kitchen and a commercial cloud kitchen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: What's Next -->
+    <section id="next">
+        <div class="section-container">
+            <span class="section-label">Wrapping Up</span>
+            <h2 class="section-title">What You Learned Today</h2>
+            <p class="section-subtitle">This was the foundation. Next class, we write code.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🍽️</div>
+                    <div class="card-title">The Restaurant Model</div>
+                    <div class="card-desc">Customer=Browser, Menu=API, Waiter=Server, Kitchen=Database. The customer never enters the kitchen.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">Request-Response</div>
+                    <div class="card-desc">Every web interaction is a request and a response. HTTP methods (GET, POST, PUT, DELETE) define intent.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📦</div>
+                    <div class="card-title">JSON</div>
+                    <div class="card-desc">The universal format for sending data between client and server. Looks like Python dictionaries.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏭</div>
+                    <div class="card-title">Home vs Cloud Kitchen</div>
+                    <div class="card-desc">Localhost for development, Cloud for production. Development is fast, production is reliable.</div>
+                </div>
+            </div>
+
+            <div class="highlight-box warning" style="margin-top: 50px;">
+                <h3 style="margin-bottom: 20px;">🎯 Interview Questions You Can Now Answer</h3>
+                <p class="interact-hint" style="margin-bottom: 20px;">👆 Click each question to reveal the answer</p>
+                <div style="text-align: left; font-size: 1rem;">
+
+                    <div class="interview-q" onclick="toggleAnswer(this)">
+                        <div class="interview-question">1. What is the difference between frontend and backend?</div>
+                        <div class="interview-answer">Frontend is what users see (UI), backend is the server logic, database, and processing.</div>
+                    </div>
+
+                    <div class="interview-q" onclick="toggleAnswer(this)">
+                        <div class="interview-question">2. Explain client-server architecture.</div>
+                        <div class="interview-answer">Client (browser/app) sends requests, server processes and responds. They communicate over a network.</div>
+                    </div>
+
+                    <div class="interview-q" onclick="toggleAnswer(this)">
+                        <div class="interview-question">3. What are the main HTTP methods and when do you use each?</div>
+                        <div class="interview-answer">GET (read), POST (create), PUT (update), DELETE (remove). GET must be safe with no side effects.</div>
+                    </div>
+
+                    <div class="interview-q" onclick="toggleAnswer(this)">
+                        <div class="interview-question">4. What is an API?</div>
+                        <div class="interview-answer">A defined contract for how software components communicate — like a restaurant menu listing available options.</div>
+                    </div>
+
+                    <div class="interview-q" onclick="toggleAnswer(this)">
+                        <div class="interview-question">5. Why can't browsers execute SQL directly against databases?</div>
+                        <div class="interview-answer">Security. The server acts as a gatekeeper — validates, authenticates, and controls what data is accessible.</div>
+                    </div>
+
+                    <div class="interview-q" onclick="toggleAnswer(this)">
+                        <div class="interview-question">6. What is JSON and why is it used?</div>
+                        <div class="interview-answer">A lightweight, human-readable data format for transferring data between client and server. Language-agnostic.</div>
+                    </div>
+
+                    <div class="interview-q" onclick="toggleAnswer(this)">
+                        <div class="interview-question">7. Who or what can be a "client" in client-server architecture?</div>
+                        <div class="interview-answer">
+                            <strong>Anything that makes requests to a server:</strong><br><br>
+                            <table style="width: 100%; font-size: 0.9rem; border-collapse: collapse;">
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 8px 0;"><strong>Browser</strong></td>
+                                    <td style="padding: 8px 0; color: var(--text-muted);">Chrome requesting instagram.com</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 8px 0;"><strong>Mobile App</strong></td>
+                                    <td style="padding: 8px 0; color: var(--text-muted);">Swiggy app fetching restaurants</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 8px 0;"><strong>Another Server</strong></td>
+                                    <td style="padding: 8px 0; color: var(--text-muted);">Your backend calling Razorpay API</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 8px 0;"><strong>CLI Tool</strong></td>
+                                    <td style="padding: 8px 0; color: var(--text-muted);">curl or Postman testing an endpoint</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 8px 0;"><strong>IoT Device</strong></td>
+                                    <td style="padding: 8px 0; color: var(--text-muted);">Smart fridge sending temperature data</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 8px 0;"><strong>Cron Job</strong></td>
+                                    <td style="padding: 8px 0; color: var(--text-muted);">Scheduled script hitting your API daily</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0;"><strong>AI Agent</strong></td>
+                                    <td style="padding: 8px 0; color: var(--text-muted);">ChatGPT calling a weather API to answer your question</td>
+                                </tr>
+                            </table>
+                            <br><em>Key insight: A server can also be a client when it calls another service!</em>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="margin-bottom: 20px;">📝 Homework</h3>
+                <div style="text-align: left; font-size: 1.1rem; line-height: 2;">
+                    <p><strong>1. Explore Network Tab</strong><br>
+                    <span style="color: var(--text-secondary);">Visit any website → Right-click → Inspect → Network tab → Refresh. Watch the HTTP requests.</span></p>
+                    <p style="margin-top: 15px;"><strong>2. Install Postman</strong><br>
+                    <span style="color: var(--text-secondary);">Tool to send HTTP requests without a browser. → <a href="https://www.postman.com/downloads/" target="_blank" style="color: var(--accent-primary);">postman.com/downloads</a></span></p>
+                    <p style="margin-top: 15px;"><strong>3. Install Git</strong><br>
+                    <span style="color: var(--text-secondary);">Version control for next class. → <a href="https://git-scm.com/downloads" target="_blank" style="color: var(--accent-primary);">git-scm.com/downloads</a></span></p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: var(--bg-secondary); border-radius: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                <h2 style="margin-bottom: 15px;">See You Next Class!</h2>
+                <p style="font-size: 1.3rem; color: var(--text-secondary);">
+                    <strong style="color: var(--accent-primary);">Git, Commits, Merge, Rebase</strong><br>
+                    "How do multiple chefs work on the same recipe book without overwriting each other?"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="#top">Back to Top</a>
+            <a href="#intro">Introduction</a>
+            <a href="#curriculum">Curriculum</a>
+            <a href="#restaurant">Restaurant</a>
+            <a href="#http">HTTP & APIs</a>
+        </div>
+        <p style="color: var(--text-muted);">Backend Engineering • Python LLD Module • Class 1</p>
+    </footer>
+
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            document.getElementById('themeIcon').textContent = newTheme === 'light' ? '☀️' : '🌙';
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('themeIcon').textContent = savedTheme === 'light' ? '☀️' : '🌙';
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Module toggle
+        function toggleModule(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('expanded');
+        }
+
+        // Restaurant flow reveal
+        function revealStep(index) {
+            const step = document.getElementById(`step-${index}`);
+            step.classList.add('revealed');
+        }
+
+        // HTTP reveal
+        function revealHTTP(element) {
+            element.classList.add('revealed');
+        }
+
+        // Interview question toggle
+        function toggleAnswer(element) {
+            element.classList.toggle('revealed');
+        }
+
+        // Quiz functionality
+        function selectOption(element, quizId) {
+            const options = document.querySelectorAll(`#${quizId} .question-option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function checkAnswer(quizId) {
+            const selected = document.querySelector(`#${quizId} .question-option.selected`);
+            const resultDiv = document.getElementById(`${quizId}-result`);
+            const explanationDiv = document.getElementById(`${quizId}-explanation`);
+
+            if (!selected) {
+                resultDiv.textContent = 'Please select an answer first.';
+                resultDiv.className = 'question-result show incorrect';
+                return;
+            }
+
+            const isCorrect = selected.dataset.correct === 'true';
+            const options = document.querySelectorAll(`#${quizId} .question-option`);
+
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.correct === 'true') {
+                    opt.classList.add('correct');
+                } else if (opt === selected && !isCorrect) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            if (isCorrect) {
+                resultDiv.textContent = '✓ Correct!';
+                resultDiv.className = 'question-result show correct';
+            } else {
+                resultDiv.textContent = '✗ Not quite. See the explanation below.';
+                resultDiv.className = 'question-result show incorrect';
+            }
+
+            explanationDiv.classList.add('show');
+        }
+    </script>
+</body>
+</html>
