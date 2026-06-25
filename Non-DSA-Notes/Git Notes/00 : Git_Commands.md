@@ -1,9 +1,9 @@
 
-* Refer Git Notes :
+* **Refer Git Notes :**
   - 01 : index.html
   - 02 : index.html
 
-* steps:
+* **steps:**
   - Install python in the system
   - add python extension in vscode
   - clone git repo
@@ -91,31 +91,31 @@
 
 * **Git Remotes :**
 
-* $ git remote -v
+* **$ git remote -v**
     - origin https://github.com/you/project.git (fetch)
     - origin https://github.com/you/project.git (push)
 
-* Connect to remote repo: (# Add a remote$ )
+* **Connect to remote repo:** (# Add a remote$ )
   - git remote add origin "repo-URL" 
 
-* Push changes to remote repo: (# Push your commits to remote). pushing for the first time:
+* **Push changes to remote repo:** (# Push your commits to remote). pushing for the first time:
   - git push -u origin 'feature_branch_Name'
   - git push --set-upstream origin your_branch_name.
     then, just git push
 
   - -u (or --set-upstream) creates a link between your local branch and the remote branch.
     
-* sync your local repo with repo: (# Pull latest changes from remote)
+* **sync your local repo with repo:** (# Pull latest changes from remote)
   - git checkout main
   - git pull origin main
 
-* fetch changes : (# Fetch changes without merging (safe peek))
+* **fetch changes :** (# Fetch changes without merging (safe peek))
   - $ git fetch origin   
 
 
-* git push : Upload your local commits to the remote. "Hey GitHub, here's my new work!"
-* git pull : Download AND merge remote changes. pull = fetch + merge
-* git fetch : Download changes but don't merge yet. Safe way to see what's new before integrating.
+* **git push :** Upload your local commits to the remote. "Hey GitHub, here's my new work!"
+* **git pull :** Download AND merge remote changes. pull = fetch + merge
+* **git fetch :** Download changes but don't merge yet. Safe way to see what's new before integrating.
 
 * **Typical Workflow :**
   1. git pull origin main — Get latest changes
@@ -125,33 +125,33 @@
 -----
 -----
 
-* Understanding Remote Tracking Branches : When you clone a repo, Git creates TWO types of branches locally:
-  -  Local Branches (Read + Write) : You can checkout these. You can commit to these. You can modify these. These are YOUR working copies
+* **Understanding Remote Tracking Branches :** When you clone a repo, Git creates TWO types of branches locally:
+  -  **Local Branches (Read + Write) :** You can checkout these. You can commit to these. You can modify these. These are YOUR working copies
     - main
     - feature/login
-  -  Remote Tracking Branches (Read Only) : You cannot commit to these. These are bookmarks showing where remote was. Updated ONLY by fetch or pull. Like a "last known position" of remote.
+  -  **Remote Tracking Branches (Read Only) :** You cannot commit to these. These are bookmarks showing where remote was. Updated ONLY by fetch or pull. Like a "last known position" of remote.
     - origin/main
     - origin/feature/login
 
-* Fetch vs Pull: The Real Difference
+* **Fetch vs Pull: The Real Difference**
 
-1) git fetch : Safe! You can review changes before merging.
+**1) git fetch :** Safe! You can review changes before merging.
    - Downloads new commits from remote
    - Updates origin/main (tracking branch)
    - Does NOT touch your local main
      
-2) git pull : Convenient! But may cause merge conflicts.
+**2) git pull :** Convenient! But may cause merge conflicts.
    - Runs git fetch first
    - Then runs git merge origin/main
    - Modifies your local main
 
 
-* Use git fetch when:
+* **Use git fetch when:**
   - You want to see what changed before merging
   - You're not sure if merging will cause conflicts
   - You want to compare: git diff main origin/main
 
-* Use git pull when:
+* **Use git pull when:**
   - You trust the remote changes
   - You want to quickly sync up
   - You're ready to handle any merge conflicts
@@ -205,66 +205,66 @@
 ------
 ------
 
-* Merge Conflicts : A conflict occurs when Git can't automatically merge because the same lines were changed differently in both branches.
+* **Merge Conflicts :** A conflict occurs when Git can't automatically merge because the same lines were changed differently in both branches.
 
-* What a Conflict Looks Like in Your File :
+* **What a Conflict Looks Like in Your File :**
   - <<<<<<< HEAD (Start of conflict (your version))
   - ======= (Separator between versions)
   - >>>>>>> branch (End of conflict (incoming version))
 
 
-* How to Resolve a Merge Conflict :
-  1) Git tells you there's a conflict
+* **How to Resolve a Merge Conflict :**
+  **1) Git tells you there's a conflict**
      - $ git merge feature/new-pricing
      - Auto-merging config.py
      - CONFLICT (content): Merge conflict in config.py
      - Automatic merge failed; fix conflicts and then commit.
        
-  2) Open the file and decide what to keep
+  **2) Open the file and decide what to keep**
      - Keep YOUR version (HEAD)
      - Keep THEIR version (incoming)
      - Keep BOTH (if they should both exist)
      - Write something completely NEW
     
-  3) Edit the file to resolve : Make sure to remove ALL conflict markers: <<<<<<<, =======, >>>>>>>
-  4) Stage and commit the resolution
+  **3) Edit the file to resolve :** Make sure to remove ALL conflict markers: <<<<<<<, =======, >>>>>>>
+  **4) Stage and commit the resolution**
      - $ git add config.py
      - $ git commit -m "fix: Resolve pricing conflict, keep original price"
  
 
-* 🆘 Help! I'm confused and want to start over. How do I abort a merge?
+* **🆘 Help! I'm confused and want to start over. How do I abort a merge?**
   - If you're in the middle of a conflicted merge and want to cancel it completely: This returns your working directory to the state before the merge. No harm done!
   - $ git merge --abort
  
-* More Git Tools to Know :
-  - 📦 git stash — (Temporarily save uncommitted changes)
+* **More Git Tools to Know :**
+  - **📦 git stash** — (Temporarily save uncommitted changes)
     - $ git stash
     - $ git checkout other-branch (# Do other work, switch branches, etc.)
     - $ git checkout original-branch (# Come back and restore your changes)
     - $ git stash pop
     - $ git stash list (# View all stashed changes)
 
-  - Git reset             : git reset --hard HEAD~1
-  - ↩️ git revert abc     : Undo pushed commits safely
-  - ✏️ git commit --amend : Fix the last commit
-  - 🔮 git reflog         : Your Git Time Machine (Find "lost" commits)
-  - 🍒 git cherry-pick    : Copy a specific commit
-  - 🔍 git bisect         : Find which commit broke something
-  - 🏷️ git tag            : Mark releases and versions
+  - **Git reset **            : git reset --hard HEAD~1
+  - **↩️ git revert abc**     : Undo pushed commits safely
+  - **✏️ git commit --amend** : Fix the last commit
+  - **🔮 git reflog**         : Your Git Time Machine (Find "lost" commits)
+  - **🍒 git cherry-pick**    : Copy a specific commit
+  - **🔍 git bisect**         : Find which commit broke something
+  - **🏷️ git tag**            : Mark releases and versions
 -----
 -----
 
-* Pull Requests (PRs) : A Pull Request is a proposal to merge your changes into another branch. It's where code review happens.
+* **Pull Requests (PRs) :** A Pull Request is a proposal to merge your changes into another branch. It's where code review happens.
  
-* create PR:
+* **create PR:**
   - after PR is merged, delete your feature branch. push changes to your remote branch, then delete the branch locally first.
   - git branch -d 'feature_branch'
 
-* to delete from remote repo:
+* **to delete from remote repo:**
   - git push origin --delete 'feature_branch'
 
 
-* The Pull Request Lifecycle :
+* **The Pull Request Lifecycle :**
   1) Create a Branch & Make Changes: Work on your feature branch, commit your changes locally.
   2) Push to Remote : git push origin feature/your-branch
   3) Open a Pull Request : On GitHub, click "New Pull Request". Write a description of your changes.
@@ -275,15 +275,15 @@
 ----
 ----
 
-* Commit Often : Small, focused commits. Not one giant commit at end of day. Each commit should do one thing.
-* Meaningful Branch Names : feature/user-auth, fix/payment-bug, refactor/api-cleanup — not my-branch.
-* Review Before Commit : git diff to see changes. git diff --staged to see what's about to be committed.
-* Never Commit Secrets : API keys, passwords, .env files — add to .gitignore. Once committed, they're in history forever.
+* **Commit Often :** Small, focused commits. Not one giant commit at end of day. Each commit should do one thing.
+* **Meaningful Branch Names :** feature/user-auth, fix/payment-bug, refactor/api-cleanup — not my-branch.
+* **Review Before Commit :** git diff to see changes. git diff --staged to see what's about to be committed.
+* **Never Commit Secrets :** API keys, passwords, .env files — add to .gitignore. Once committed, they're in history forever.
 
 ----
 ----
 
-* Practice & Resources :
+* **Practice & Resources :**
   - [Visual Git Guide](https://marklodato.github.io/visual-git-guide/index-en.html)
   - [Learn Git Branching](https://learngitbranching.js.org/)
   - [ohmygit : game about learning git](https://ohmygit.org/)
@@ -294,7 +294,7 @@
 ----
 ###########################################################################################################################
 
-Markdown syntax :
+## **Markdown syntax :**
 
 * Headings : To create a heading, add number signs (#) in front of a word or phrase. #, ##, ###....
 * Paragraph : To create paragraphs, use a blank line to separate one or more lines of text, don’t indent paragraphs with spaces or tabs.
