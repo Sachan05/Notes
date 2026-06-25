@@ -1,5 +1,7 @@
 
-
+* Refer Git Notes :
+  - 01 : index.html
+  - 02 : index.html
 
 * steps:
   - Install python in the system
