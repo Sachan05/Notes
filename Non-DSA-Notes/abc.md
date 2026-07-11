@@ -721,13 +721,13 @@ Now changing the database requires modifying UserService.
 
 ----------------------------------------------------
 
-Dependency Injection (DI)
+## Dependency Injection (DI)
 -------------------------
 
 Definition:
 
-Instead of creating dependencies inside a class,
-provide them from outside.
+**Instead of creating dependencies inside a class,
+provide them from outside.**
 
 Bad:
 
@@ -804,6 +804,18 @@ HAS-A
 - Logger
 - Cache
 - JWT Provider
+
+- Need Logger, Database, Cache. Should we write : class AuthService(Database, Logger, Cache): NOPE
+- Instead :
+      ```
+        class AuthService:
+  
+            def __init__(self):
+        
+                self.db = Database()
+                self.logger = Logger()
+                self.cache = Cache()
+      ```
 
 ----------------------------------------------------
 
@@ -1004,7 +1016,8 @@ Most Important Interview Takeaways
 
 
 
-
+**I use inheritance when there's a genuine IS-A relationship and shared behavior. For most service dependencies and infrastructure components, I prefer composition with dependency injection because it results in loose coupling, easier testing, and better maintainability.
+In modern backend applications, abstraction defines the contract, composition assembles the components, dependency injection provides them, and polymorphism allows interchangeable implementations.**
 
 
 
