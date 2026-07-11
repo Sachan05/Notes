@@ -9,7 +9,8 @@
 ✔ Attributes  
 ✔ Methods  
 ✔ self  
-✔ Constructors  
+✔ Constructors   
+
 ----
 
 * **OBJECT :** An object in Python is a fundamental data structure in memory that contains data (called attributes) and code that can manipulate that data (called methods). In Python, "everything is an object".
@@ -129,8 +130,8 @@ Q6. Can an object exist without a class?
 ✔ Access modifiers  
 ✔ Getters/Setters  
 ✔ @property decorator  
-----
 
+----
 
 **Encapsulation :**
 Encapsulation means hiding an object's internal data and allowing controlled access through methods or properties. Bundling data and methods together while restricting direct access to internal data.
@@ -243,6 +244,7 @@ The @property decorator transforms a method into a read-only property (getter). 
 ✔ Method Resolution Order (MRO)  
 ✔ Diamond problem  
 ✔ Common interview questions  
+
 -----
 
 **Inheritance :** 
