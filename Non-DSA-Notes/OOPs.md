@@ -158,27 +158,29 @@ Purpose:
 - Not true privacy.
 
 ---- 
-* **Examples :**
+* **Examples :**  
   ```class Employee:  
     def __init__(self):  
-        self.name = "Alice"  ```
+        self.name = "Alice"```
   
 **1) Public Members : everything works**
-     - emp = Employee()
-     - print(emp.name)
-     - emp.name = "Bob"
+
+     ```emp = Employee()
+        print(emp.name)
+        emp.name = "Bob"```
 
 **2) Protected Members (_):**
-     - self._salary = 50000
-     - You can still access it: print(emp._salary).
-     - Nothing stops you. Why? Because _ is just a convention. it means, "This is an internal implementation detail. Please don't access it from outside unless necessary."
+     ```self._salary = 50000
+     - You can still access it: print(emp._salary).  
+     - Nothing stops you. Why? Because _ is just a convention. it means, "This is an internal implementation detail. Please don't access it from outside unless necessary."```
     
 **3) Private Members (__) :**
-     - self.__salary = 50000
+     ```self.__salary = 50000
      - now try, print(emp.__salary)  --->  output : AttributeError:'Employee' object has no attribute '__salary'
      - Python performs name mangling here, Internally, it changes: self.__salary ---> self._Employee__salary   (it adds the class name.)
      - so you can still access it using : print(emp._Employee__salary) ----> 50000
      - **So __ is not true privacy. It is name mangling to reduce accidental access and name clashes.**
+     ```
     
 **Q: Does Python support private variables?**
      - Python doesn't have true private variables. Using __variable triggers name mangling, making accidental access harder by renaming it to _ClassName__variable.
