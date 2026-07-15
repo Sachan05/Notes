@@ -63,15 +63,15 @@ Core Properties of a Python Object :
 
 
 * **Questions :**
-Q1. Difference between Class and Object?
-Q2. What is self?
-Q3. Why do we use init?
-Q4. Difference between attribute and method?
-- an attribute represents data or state associated with an object, whereas a method represents an action or behavior that the object can perform
-Q5. Can a class exist without an object?
-- NO
-Q6. Can an object exist without a class?
-- In normal Python code, no. Every object is an instance of some class (even built-in types like int or list).
+Q1. Difference between Class and Object?  
+Q2. What is self?  
+Q3. Why do we use init?  
+Q4. Difference between attribute and method?  
+- an attribute represents data or state associated with an object, whereas a method represents an action or behavior that the object can perform  
+Q5. Can a class exist without an object?  
+- Yes, a class can completely exist without you creating an instance (object) of it.When you define a class in Python, the class definition is immediately executed, and Python creates a class object in memory. This allows you to use the class as a standalone container for variables and functions without ever instantiating it.    
+Q6. Can an object exist without a class?  
+- In normal Python code, no. Every object is an instance of some class (even built-in types like int or list).  
 
 
 **Q7 : Assignment (=) vs Mutation (append, extend, pop, etc.)**
