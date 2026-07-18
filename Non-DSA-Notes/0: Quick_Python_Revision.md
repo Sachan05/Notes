@@ -516,7 +516,7 @@ List -> O(n)
 
 # 12. List Initialization
 
-## Initialize with same value
+## Initialize with the same value
 
 ```python
 ans = [1] * n
@@ -659,4 +659,180 @@ dp = [0] * n
 | Prefix / DP Arrays | `[1]*n`, `[0]*n`, `[False]*n` |
 
 ---
+
+==============
+### Syntax : 
+==============
+
+## 1. String Patterns
+
+  Task            Pattern                       Complexity
+  --------------- ----------------------------- ------------
+  Reverse         `s[::-1]`                     O(n)
+  Palindrome      `s==s[::-1]`                  O(n)
+  Reverse words   `" ".join(s.split()[::-1])`   O(n)
+  Count words     `len(s.split())`              O(n)
+  Remove spaces   `s.replace(" ","")`           O(n)
+  Anagram         `Counter(a)==Counter(b)`      O(n)
+
+``` python
+from collections import Counter
+freq=Counter("banana")
+```
+
+Common questions: - Reverse string - Count vowels - First unique
+character - Character frequency - Longest word - Remove special
+characters (`re.sub`)
+
+## 2. List Patterns
+
+``` python
+# Remove duplicates preserving order
+seen=set(); out=[]
+for x in nums:
+    if x not in seen:
+        seen.add(x); out.append(x)
+```
+
+``` python
+# Move zeros
+nz=[x for x in nums if x!=0]
+ans=nz+[0]*(len(nums)-len(nz))
+```
+
+``` python
+# Flatten
+[x for row in arr for x in row]
+```
+
+Other patterns: - Rotate: `nums[-k:]+nums[:-k]` - Max/Min:
+`max(), min()` - Second largest (track two vars) - Sorting: `sorted()`
+vs `.sort()`
+
+## 3. Dictionary & HashMap
+
+``` python
+freq={}
+for ch in s:
+    freq[ch]=freq.get(ch,0)+1
+```
+
+``` python
+# Two Sum
+d={}
+for i,x in enumerate(nums):
+    if target-x in d:
+        return [d[target-x],i]
+    d[x]=i
+```
+
+Know: - Counter - defaultdict - get() - items(), keys(), values() - dict
+comprehension
+
+## 4. Sets
+
+``` python
+set(a)|set(b)
+set(a)&set(b)
+set(a)-set(b)
+```
+
+Use sets for: - Fast lookup - Duplicate detection - Union/intersection
+
+## 5. Built-ins
+
+-   enumerate
+-   zip
+-   sorted / sort
+-   reversed
+-   any / all
+-   sum, min, max
+-   map, filter
+-   list, tuple, set, dict
+-   append, extend, insert, pop, remove
+-   split, join, strip, replace, find, count
+
+## 6. Top Interview Questions
+
+1.  Reverse String → slicing
+2.  Palindrome → compare reverse
+3.  Count vowels
+4.  Character frequency
+5.  First non-repeating character
+6.  Remove duplicates
+7.  Find duplicates
+8.  Second largest
+9.  Move zeros
+10. Reverse words
+11. Count words
+12. Anagram
+13. Intersection
+14. Union
+15. Difference
+16. Flatten nested list
+17. Rotate array
+18. Two Sum
+19. Merge dictionaries
+20. Sort dictionary by value
+21. List comprehensions
+22. Even/Odd filtering
+23. Squares/Cubes
+24. Remove duplicates from sorted array
+25. Basic recursion (factorial/fibonacci)
+
+## 7. Complexity
+
+  Operation           Time
+  ------------------- ------------
+  List append         O(1)
+  List insert front   O(n)
+  Lookup dict/set     O(1)
+  Sort                O(n log n)
+  Reverse slicing     O(n)
+
+## 8. Python Tricks
+
+``` python
+nums[::-1]
+sorted(nums,key=len)
+max(words,key=len)
+zip(*matrix)
+''.join(chars)
+list(map(int,input().split()))
+[x*x for x in nums]
+```
+
+## 9. Common Mistakes
+
+``` python
+# Wrong
+print(nums.sort())
+# Right
+nums.sort(); print(nums)
+```
+
+``` python
+# Wrong
+a=[[0]*3]*3
+# Right
+a=[[0]*3 for _ in range(3)]
+```
+
+## 10. Final Assessment Checklist
+
+-   Read input carefully.
+-   Handle empty input.
+-   Test duplicates.
+-   Use built-ins.
+-   Prefer HashMap for lookups.
+-   Think about time complexity.
+-   Dry run once before submitting.
+
+
+
+
+
+
+
+
 
