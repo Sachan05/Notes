@@ -94,8 +94,7 @@ defaultdict(dict)     # default = {}
 
 
 
-```
-from collections import defaultdict
+```from collections import defaultdict
 
 # Group values
 groups = defaultdict(list)
