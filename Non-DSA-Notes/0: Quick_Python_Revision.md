@@ -48,7 +48,7 @@ Counter("banana")
 
 # 2. defaultdict
 
-Automatically creates missing keys.
+> **Automatically creates missing keys.**
 
 ```python
 from collections import defaultdict
@@ -91,6 +91,29 @@ defaultdict(list)     # default = []
 defaultdict(set)      # default = set()
 defaultdict(dict)     # default = {}
 ```
+
+
+
+```
+from collections import defaultdict
+
+# Group values
+groups = defaultdict(list)
+groups[key].append(value)
+
+# Count frequencies
+count = defaultdict(int)
+count[x] += 1
+
+# Store unique values
+graph = defaultdict(set)
+graph[u].add(v)
+
+# Nested dictionary
+nested = defaultdict(dict)
+nested[a][b] = value
+```
+
 
 ### Common Uses
 
