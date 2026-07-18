@@ -661,28 +661,33 @@ dp = [0] * n
 ---
 
 ==============
-### Syntax : 
+### Quick Syntax : 
 ==============
 
 ## 1. String Patterns
 
-  Task            Pattern                       Complexity
-  --------------- ----------------------------- ------------
-  Reverse         `s[::-1]`                     O(n)
-  Palindrome      `s==s[::-1]`                  O(n)
-  Reverse words   `" ".join(s.split()[::-1])`   O(n)
-  Count words     `len(s.split())`              O(n)
-  Remove spaces   `s.replace(" ","")`           O(n)
-  Anagram         `Counter(a)==Counter(b)`      O(n)
+``` python
+Task            Pattern                       Complexity
+--------------  --------------------------   ------------
+Reverse         `s[::-1]`                     O(n)
+Palindrome      `s==s[::-1]`                  O(n)
+Reverse words   `" ".join(s.split()[::-1])`   O(n)
+Count words     `len(s.split())`              O(n)
+Remove spaces   `s.replace(" ","")`           O(n)
+Anagram         `Counter(a)==Counter(b)`      O(n)
+```
 
 ``` python
 from collections import Counter
 freq=Counter("banana")
 ```
 
-Common questions: - Reverse string - Count vowels - First unique
-character - Character frequency - Longest word - Remove special
-characters (`re.sub`)
+Common questions: 
+- Reverse string
+- Count vowels
+- First unique
+- character - Character frequency - Longest word - Remove special
+- characters (`re.sub`)
 
 ## 2. List Patterns
 
@@ -705,9 +710,10 @@ ans=nz+[0]*(len(nums)-len(nz))
 [x for row in arr for x in row]
 ```
 
-Other patterns: - Rotate: `nums[-k:]+nums[:-k]` - Max/Min:
-`max(), min()` - Second largest (track two vars) - Sorting: `sorted()`
-vs `.sort()`
+Other patterns: 
+- Rotate: `nums[-k:]+nums[:-k]`
+- Max/Min: `max(), min()` - Second largest (track two vars)
+- Sorting: `sorted()` vs `.sort()`
 
 ## 3. Dictionary & HashMap
 
@@ -732,9 +738,9 @@ comprehension
 ## 4. Sets
 
 ``` python
-set(a)|set(b)
-set(a)&set(b)
-set(a)-set(b)
+set(a)|set(b) - Union
+set(a)&set(b) - Intersection
+set(a)-set(b) - Difference
 ```
 
 Use sets for: - Fast lookup - Duplicate detection - Union/intersection
@@ -818,15 +824,51 @@ a=[[0]*3]*3
 a=[[0]*3 for _ in range(3)]
 ```
 
-## 10. Final Assessment Checklist
+---
+=================
+## 10. Questions :
+==================
 
--   Read input carefully.
--   Handle empty input.
--   Test duplicates.
--   Use built-ins.
--   Prefer HashMap for lookups.
--   Think about time complexity.
--   Dry run once before submitting.
+Q1 Reverse a String :
+    ```
+    def reverse_string(s):
+        return s[::-1]
+    or
+    
+    ''.join(reversed(s))
+    ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
