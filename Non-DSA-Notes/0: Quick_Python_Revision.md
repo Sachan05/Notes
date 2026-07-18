@@ -94,7 +94,8 @@ defaultdict(dict)     # default = {}
 
 
 
-```from collections import defaultdict
+```
+from collections import defaultdict
 
 # Group values
 groups = defaultdict(list)
@@ -124,7 +125,8 @@ nested[a][b] = value
 
 # 3. deque
 
-Double Ended Queue
+Double Ended Queue (pronounced "deck").
+**it allows O(1) insertion and deletion from both ends.**
 
 ```python
 from collections import deque
@@ -143,6 +145,11 @@ q.popleft()        # Remove left
 
 q[0]               # Front
 q[-1]              # Back
+len(q)             # Size
+q.clear()
+q.extend([4,5])        # Adds multiple elements to the right.
+q.extendleft([7,8])    # Adds multiple elements to the left in reverse order.
+    output : deque([8,7,1,2])
 ```
 
 ### Queue (FIFO)
@@ -165,6 +172,13 @@ q.pop()
 
 ### Used In
 
+
+- Binary Tree Level Order Traversal
+- Graph Traversal
+- Shortest Path in an Unweighted Graph
+- Rotting Oranges
+- Number of Islands
+- Word Ladder
 - BFS
 - Sliding Window
 - Queue
@@ -202,7 +216,8 @@ largest = -heapq.heappop(heap)
 
 - K largest/smallest
 - Priority Queue
-- Merge K Sorted Lists
+- Merge K Sorted Lists : Tasks with higher priority are processed first.
+      - heapq.heappush(heap, (priority, task))
 - Scheduling
 
 Complexity
@@ -270,14 +285,15 @@ arr.sort(key=lambda x:(x[0], -x[1]))
 
 ```python
 new = sorted(arr)
+sorted(nums, key=lambda x: (x[0], x[1]))
 ```
 
 Difference
 
 ```
-sort()      -> modifies list
+sort()      -> modifies list  -> Works only on lists
 
-sorted()    -> returns new list
+sorted()    -> returns new list -> Works on any iterable (list, tuple, string, etc.)
 ```
 
 ---
@@ -644,4 +660,3 @@ dp = [0] * n
 
 ---
 
-## ⭐ If you can comfortably use every pattern on this sheet without looking it up, you'll be well prepared for most Python-based coding assessments (CodeSignal, LeetCode Easy/Medium, HackerRank, etc.).
