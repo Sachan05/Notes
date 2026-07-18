@@ -823,14 +823,14 @@ a=[[0]*3]*3
 # Right
 a=[[0]*3 for _ in range(3)]
 ```
+----
 
----
 =================
 ## 10. Questions :
 ==================
 
 Q1 Reverse a String :
-    ```
+    ```python
     def reverse_string(s):
         return s[::-1]
     or
