@@ -825,7 +825,6 @@ a=[[0]*3 for _ in range(3)]
 ```
 ----
 
-=================
 ## 10. Questions :
 
 
@@ -839,41 +838,245 @@ or
 ```
 
 
+Q2 Count vowels
+```python
+def count_vowels(s):
+    vowels = set("aeiouAEIOU")
+    count = 0
+
+    for ch in s:
+        if ch in vowels:
+            count += 1
+
+    return count
+```
+
+Q3 Check palindrome
+```python
+def palindrome(s):
+    return s == s[::-1]
+```
+
+
+Q4 Remove duplicates from list
+```python
+* If order doesn't matter:
+    list(set(nums))
+
+* If order matters:
+    def remove_duplicates(nums):
+        seen = set()
+        ans = []
+    
+        for x in nums:
+            if x not in seen:
+                seen.add(x)
+                ans.append(x)
+    
+        return ans
+```
+
+
+Q5 Find maximum element
+```python
+max(nums)
+
+Without max():
+
+m = nums[0]
+
+for x in nums:
+    if x > m:
+        m = x
+
+print(m)
+```
 
 
 
+Q6 Character frequency
+```python
+from collections import Counter
+
+Counter(s)
+```
+
+
+Q7 First non-repeating character
+```python
+from collections import Counter
+
+def first_unique(s):
+    c = Counter(s)
+
+    for ch in s:
+        if c[ch] == 1:
+            return ch
+
+    return None
+```
+
+Q8 Find duplicates
+```python
+seen = set()
+dup = []
+
+for x in nums:
+    if x in seen:
+        dup.append(x)
+    else:
+        seen.add(x)
+```
+
+
+Q9 Second largest
+```python
+first = second = float("-inf")
+
+for x in nums:
+    if x > first:
+        second = first
+        first = x
+
+    elif first > x > second:
+        second = x
+```
+----
+
+Q10 Move all zeros to end
+```python
+def move_zero(nums):
+    result = []
+
+    count = 0
+
+    for x in nums:
+        if x != 0:
+            result.append(x)
+        else:
+            count += 1
+
+    result.extend([0] * count)
+
+    return result
+```
 
 
 
+Q11 Reverse words
+```python
+" ".join(s.split()[::-1])
+```
 
 
+Q12 Count words
+```python
+len(s.split())
+```
 
 
+Q13 Remove spaces
+```python
+s.replace(" ", "")
+```
+
+Q14 Remove special characters
+```python
+import re
+re.sub(r'[^A-Za-z0-9]', '', s)
+```
+
+Q15 Check anagram
+```python
+sorted(a) == sorted(b)
+
+Better :
+
+from collections import Counter
+Counter(a) == Counter(b)
+```
+----
+
+Lists :
+```python
+Q16 Lists Intersection
+    - list(set(a) & set(b))
+
+Q17 Lists Union
+    - list(set(a) | set(b))
+
+Q18 Lists Difference
+    - list(set(a) - set(b))
+
+Q19 Lists Flatten
+    - res = [x for row in nums for x in row]
+
+Q20 Rotate Lists by k 
+    - nums[-k:] + nums[:-k]
+
+List Comprehensions:
+
+Even numbers
+    - [x for x in nums if x % 2 == 0]
+Squares
+    - [x*x for x in nums]
+Dictionary
+    - {x: x*x for x in nums}
+```
+
+----
+
+Q21 Invert dictionary
+```python
+d = {'a':1,'b':2}
+
+{v:k for k,v in d.items()}
+```
+
+Q22 Merge dictionaries
+```python
+d1 | d2
+
+or 
+
+{**d1, **d2}
+```
 
 
+Q23 Sort dictionary by value
+```python
+sorted(d.items(), key=lambda x: x[1])
+```
+----
+
+Two-Pointer Questions :
+
+Q24 Two Sum
+```python
+def two_sum(nums, target):
+    d = {}
+
+    for i, x in enumerate(nums):
+        if target - x in d:
+            return [d[target - x], i]
+
+        d[x] = i
+```
+
+Q25 Remove duplicates (sorted array)
+```python
+i = 0
+
+for j in range(1, len(nums)):
+    if nums[j] != nums[i]:
+        i += 1
+        nums[i] = nums[j]
+
+return i + 1
+```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-----
 
 
 
