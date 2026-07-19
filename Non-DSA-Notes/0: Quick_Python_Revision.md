@@ -1049,18 +1049,59 @@ sorted(d.items(), key=lambda x: x[1])
 ```
 ----
 
+Q : transpose of a matrix
+```python
+matrix = [
+    [1, 2],
+    [3, 4],
+    [5, 6]
+]
+
+# zip(*matrix) groups column elements; map() converts resulting tuples back to lists
+transposed = list(map(list, zip(*matrix)))
+
+OR
+
+# Outer loop tracks column count, inner loop tracks row count
+transposed = [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+
+OR
+
+# Transpose using .T
+import numpy as np
+
+matri_new = np.array(matrix)
+transposed = matrix.T
+
+
+print(transposed)
+# Output: [[1, 3, 5], [2, 4, 6]]
+```
+
+
+
 Two-Pointer Questions :
 
 Q24 Two Sum
 ```python
-def two_sum(nums, target):
-    d = {}
+def twoSum(arr, target):
+  
+    # Create a set to store the elements
+    s = set()
+    for num in arr:
+        # Calculate the complement that added to
+        # num, equals the target
+        complement = target - num
 
-    for i, x in enumerate(nums):
-        if target - x in d:
-            return [d[target - x], i]
+        # Check if the complement exists in the set
+        if complement in s:
+            return True
 
-        d[x] = i
+        # Add the current element to the set
+        s.add(num)
+
+    # If no pair is found
+    return False
 ```
 
 Q25 Remove duplicates (sorted array)
